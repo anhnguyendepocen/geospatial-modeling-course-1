@@ -58,7 +58,7 @@ Under Tools->Extensions make sure there is a check next to 'Spatial Analyst'
 Select View->Toolbars->Spatial Analyst to activate the extension
 </pre>
 Set your workspace and scratch workspace to C:\path\.Erosion
-<pre> 
+<pre>
 Geoprocessing>Environments>Workspace
 </pre>
 <h3>Compute soil detachment rate using USLE3D</h3>
@@ -199,14 +199,14 @@ Calculate qsx
 <pre>
 In the ArcToolbox, Select 'Spatial Analyst->Map Algebra->Raster Calculator
 expression=
-"sflowtopo" * "soils_kf" * "cfactb" * 270. * Cos((- "aspect_1m" + 450.) * math.pi / 180.0) 
+"sflowtopo" * "soils_kf" * "cfactb" * 270. * Cos((- "aspect_1m" + 450.) * math.pi / 180.0)
 Output raster = qsx
 </pre>
 Calculate qsy
 <pre>
 In the ArcToolbox, Select 'Spatial Analyst->Map Algebra->Raster Calculator
 expression=
-"sflowtopo" * "soils_kf" * "cfactb" * 270. * Sin((- "aspect_1m" + 450.) * math.pi / 180.0) 
+"sflowtopo" * "soils_kf" * "cfactb" * 270. * Sin((- "aspect_1m" + 450.) * math.pi / 180.0)
 Output raster = qsy
 </pre>
 
@@ -229,10 +229,10 @@ In ArcToolbox
 'Spatial Analyst Tools->Surface->Aspect'
 input=qsx, output=Aspect_qsx
 'Spatial Analyst Tools->Surface->Slope'
-input=qsx, output=Slope_qsy
+input=qsy, output=Slope_qsy
 In ArcToolbox
 'Spatial Analyst Tools->Surface->Aspect'
-input=qsx, output=Aspect_qsy
+input=qsy, output=Aspect_qsy
 </pre>
 Compute qsx_dx and qsy_dy
 <pre>
@@ -246,12 +246,11 @@ output=qsy_dy
 </pre>
 
 <p>
-Finally. compute net erosion deposition:
+Finally compute net erosion deposition:
 
 <pre>
 'Spatial Analyst->Map Algebra->Raster Calculator:
-expression=
-"qsx_dx" + "qsy_dy"
+expression="qsx_dx" + "qsy_dy"
 output=erdep
 </pre>
 
