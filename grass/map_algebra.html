@@ -51,9 +51,11 @@ how to use wxGUI from the first assignment</li>
 - test and improve the MASK examples
 -->
 <p>
-To run mapcalc expressions, you can either run the entire command in the GUI Command console,
-or in case of any problems, type or copy the expression in the GRASS GIS Raster Map Calculator
-which can be launched from Layer Manager toolbar.
+To run <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> expressions, you can either
+run the entire command in the GUI <em>Console</em>, or in case of any
+problems, type or copy the expression (without the <em
+class="module">r.mapcalc</em>) in the GRASS GIS Raster Map Calculator
+which can be launched from <em>Layer Manager</em> toolbar.
 
 <p>
 Text files with color rules:
@@ -75,7 +77,8 @@ click <b>Start GRASS</b>.
 <p>
 Change working directory:<br>
 <em>Settings</em> > <em>GRASS working environment</em> > <em>Change working directory</em> > select/create any directory<br>
-or type <code>cd</code> (stands for change directory) into the GUI command console and hit Enter:
+or type <code>cd</code> (stands for change directory) into the GUI
+<em>Console</em> and hit Enter:
 <pre><code>cd
 </code></pre>
 Download all text files with color rules (see above)
@@ -174,6 +177,7 @@ r.colors elevlidD_6m raster=elevation
 <!-- d.erase -->
 d.rast elevlidD_6m
 </code></pre>
+
 <!--
 <p>
 Patching discrete raster layers over continuous raster:
@@ -196,7 +200,7 @@ r.info -r elevation
 <p>
 Assign the custom color table (<a href="data/rastcomposite_color.txt">rastcomposite_color.txt</a>).<br>
 GUI: Right click on layer > <em>Properties</em> > <em>Set color table</em> > <em>Define</em> > <em>Path to rules file</em>
-or just type <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.colors.html">r.colors</a></em> into command console and hit Enter.
+or just type <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.colors.html">r.colors</a></em> into <em>Console</em> and hit Enter.
 Browser will pick up the full path to your color rules file.
 <p>
 The command below assumes that the color table is in your working directory.<br>
@@ -206,13 +210,16 @@ Zoom to computational region and switch off previous map layers.
 d.rast composite
 d.out.file composite
 </code></pre>
-  -->
+-->
+
 <h3>Map Algebra</h3>
 See <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> manual page for syntax and functions.
 <!-- # p. 107-108  -->
 <!--# <a href="mapcalcformats.html">See here for several ways on <b>how to run r.mapcalc</b></a>-->
-If you are getting en error when running <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> in command console,
-launch the GUI version from Layer Manager toolbar.
+If you are getting en error when running
+<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> in GUI <em>Console</em> or the system
+command line, launch the GUI version from <em>Layer Manager</em>
+toolbar.
 
 <h4>NDVI</h4>
 Compute Normalized Difference Vegetation Index (NDVI).<br>
@@ -306,14 +313,17 @@ d.rast urban2_30m
 
 <!-- p. 110-111<br> -->
 <h4>Handling null values</h4>
-<!-- Replace lakes in the landclass96 map with more accurate representation.<br>
+
+<!--
+Replace lakes in the landclass96 map with more accurate representation.<br>
 From raster map lakes, we divide lakes by 1000 because the lake map has
 large numbers that would have required custom color table.
 
 <pre><code>r.mapcalc "luselakes = if(isnull(lakes), landclass96, lakes/1000)"
 d.rast luselakes
 d.out.file luselakes
-</code></pre> -->
+</code></pre>
+-->
 
 <p>
 <!--
