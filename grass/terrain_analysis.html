@@ -50,8 +50,8 @@ NagsHead time series</a> and copy it into your nc_spm_08_grass7 Location
 Do not let your unzipping program create additional level directory with the same name!
 If you are not sure about GRASS GIS Database structure read about it in
 <a href="http://grass.osgeo.org/grass71/manuals/grass_database.html">the manual</a>.
-<li><a href="data/stddev_color.txt">stddev_color.txt</a></li>
-<li><a href="data/regrslope_color.txt">regrslope_color.txt</a></li>
+<li>Custom color table for time series standard deviations map <a href="data/stddev_color.txt">stddev_color.txt</a></li>
+<!--<li><a href="data/regrslope_color.txt">regrslope_color.txt</a></li>-->
 </ul>
 
 <h3>Start GRASS GIS</h3>
@@ -70,7 +70,8 @@ Click <b>Start GRASS</b>.
 <p>
 Change working directory:<br>
 <em>Settings</em> > <em>GRASS working environment</em> > <em>Change working directory</em> > select/create any directory<br>
-or type <code>cd</code> (stands for change directory) into the GUI command console and hit Enter:
+or type <code>cd</code> (stands for change directory) into the GUI
+<em>Console</em> and hit Enter:
 <pre><code>cd
 </code></pre>
 Download all text files (see above)
@@ -133,19 +134,24 @@ d.out.file slope_int
 </code></pre>
 
 <h3>Compute slope along road</h3>
-Compute slope of a bus route. First extract values from slope map layer:
+
+Compute slope of a bus route. You will need the <em>myslope</em> raster
+map created earlier. First extract values from slope map layer:
+
 <pre><code>g.region raster=elevation res=20
 v.to.rast input=busroute11 type=line output=busroute11 use=dir
 r.mapcalc "route_slope = if(busroute11, myslope)"
-</pre></code>
+</code></pre>
 
 Then compute slope in the direction of the route:
+
 <pre><code>v.to.rast input=busroute11 type=line output=busroute11_dir use=dir
 r.mapcalc "route_slope_dir = abs(atan(tan(myslope) * cos(myaspect - busroute11_dir)))"
 r.colors map=route_slope,route_slope_dir color=slope
-</pre></code>
+</code></pre>
 
 Display, zoom if necessary, and compute univariate statistics and comment on the difference of two results.
+
 <pre><code>r.univar route_slope
 r.univar route_slope_dir
 
@@ -156,7 +162,7 @@ d.rast route_slope
 d.out.file route_slope
 d.rast route_slope_dir
 d.out.file route_slope_dir
-</pre></code>
+</code></pre>
 
 <h3>Curvatures</h3>
 <p>
