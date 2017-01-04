@@ -37,7 +37,7 @@
 <!-- This is a generated file. Do not edit. -->
 <h2>Geomorphometry I: Terrain Modeling</h2>
 <p>
-Resources: <a href="http://grass.osgeo.org/grass70/manuals/index.html">
+Resources: <a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a>,
 <a href="http://liblas.org/"> libLAS tools for lidar data conversions</a>
 
@@ -51,7 +51,7 @@ Download the Raleigh 2013 lidar data as LAS file and orthophoto:
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
@@ -75,7 +75,7 @@ without the need to specify the full path to the file.
 
 <!-- p. 249<br> -->
 <h3>Analyze bare earth and multiple return lidar data properties by binning</h3>
-Import the points using <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.lidar.html">v.in.lidar</a></em>.
+Import the points using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.lidar.html">v.in.lidar</a></em>.
 We can specify which class and which return (first, middle, last) we want to import.<br>
 We can see the classification either in metadata distributed with the lidar data
 or it can be displayed with <a href="http://liblas.org/">lasinfo</a> tool (in case lasinfo command is not available, skip it.):
@@ -92,7 +92,7 @@ Note: if you have any problems with the files, review the instructions above or
 use v.in.lidar GUI dialog to browse to get the path to the files.
 <p>
 Set the region from the imported point file with resolution of 1 meter.
-Compute raster maps (with <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.lidar.html">r.in.lidar</a></em>) representing number of points per 1 m grid cell.<br>
+Compute raster maps (with <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em>) representing number of points per 1 m grid cell.<br>
 Compare point densities for bare earth, first return.
 
 <pre><code>g.region vect=elev_lid793016_1r res=1 -p

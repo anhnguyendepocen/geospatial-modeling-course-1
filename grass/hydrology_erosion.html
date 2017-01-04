@@ -38,7 +38,7 @@
 <h2>Erosion modeling</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="http://www4.ncsu.edu/~akratoc/GRASS_intro/">tutorial</a>
@@ -68,7 +68,7 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_erosion) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
@@ -140,7 +140,7 @@ d.out.file lsfac_s10
 <h4>Compute soil detachment for spatially variable land cover</h4>
 
 Set region to rural area and recode landcover_1m to cfactor
-using the <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.recode.html">r.recode</a></em> module.
+using the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.recode.html">r.recode</a></em> module.
 Assign special color table and display result.<br>
 
 <pre><code>g.region rural_1m -p
@@ -155,7 +155,7 @@ Compute the USLE3D equation using map algebra,
 cfactorbare_1m is the same as cfactor_1m,
 cfactorgrow_1m has landuse recoded for summer conditions.<br>
 Specify units of the raster maps using
-the <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.support.html">r.support</a></em> module.<br>
+the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.support.html">r.support</a></em> module.<br>
 <span class="question">Compare erosion rates and distribution
 for winter (bare) and summer conditions.</span>
  
@@ -222,7 +222,7 @@ Display elev_lid792_1m in 3D and drape over erdep as color (switch off all layer
 
 <h4>Compute summary statistics</h4>
 
-Use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.recode.html">r.recode</a></em> to classify erosion/deposition and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.category.html">r.category</a></em>
+Use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.recode.html">r.recode</a></em> to classify erosion/deposition and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.category.html">r.category</a></em>
 to add labels (stable, high erosion, etc) to individual categories:
 
 <pre><code>r.recode erdep output=erdep_class rules=erdep_class.txt

@@ -38,7 +38,7 @@
 <h2>Geospatial Analysis I: global, zonal and focal operations, map algebra</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="http://www4.ncsu.edu/~akratoc/GRASS_intro/">tutorial</a>
@@ -51,7 +51,7 @@ how to use wxGUI from the first assignment</li>
 - test and improve the MASK examples
 -->
 <p>
-To run <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> expressions, you can either
+To run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em> expressions, you can either
 run the entire command in the GUI <em>Console</em>, or in case of any
 problems, type or copy the expression (without the <em
 class="module">r.mapcalc</em>) in the GRASS GIS Raster Map Calculator
@@ -71,7 +71,7 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_map_algebra) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
@@ -112,7 +112,7 @@ Include only the relevant part of the table in your report.
 Compute zonal statistics maps representing
 average slope for each basin.<br>
 Add legends using <em>Add map elements</em> in Map Display toolbar.
-Reminder: <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/d.out.file.html">d.out.file</a></em> means Save to graphics file for your report.
+Reminder: <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/d.out.file.html">d.out.file</a></em> means Save to graphics file for your report.
 
 <pre><code>g.region raster=slope -p
 r.stats.zonal base=basin_50K cover=slope method=average output=slope_avgbasin
@@ -200,7 +200,7 @@ r.info -r elevation
 <p>
 Assign the custom color table (<a href="data/rastcomposite_color.txt">rastcomposite_color.txt</a>).<br>
 GUI: Right click on layer > <em>Properties</em> > <em>Set color table</em> > <em>Define</em> > <em>Path to rules file</em>
-or just type <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.colors.html">r.colors</a></em> into <em>Console</em> and hit Enter.
+or just type <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.colors.html">r.colors</a></em> into <em>Console</em> and hit Enter.
 Browser will pick up the full path to your color rules file.
 <p>
 The command below assumes that the color table is in your working directory.<br>
@@ -213,11 +213,11 @@ d.out.file composite
 -->
 
 <h3>Map Algebra</h3>
-See <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> manual page for syntax and functions.
+See <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em> manual page for syntax and functions.
 <!-- # p. 107-108  -->
 <!--# <a href="mapcalcformats.html">See here for several ways on <b>how to run r.mapcalc</b></a>-->
 If you are getting en error when running
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> in GUI <em>Console</em> or the system
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em> in GUI <em>Console</em> or the system
 command line, launch the GUI version from <em>Layer Manager</em>
 toolbar.
 
@@ -274,7 +274,7 @@ r.univar elev_ned_30m
 <p>
 <span class="question">Is the srtm mostly higher or lower than elev_ned?
 Which result will you use to answer the above question -
-the srtm_ned30_dif map or numbers provided by <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.univar.html">r.univar</a></em>?</span>
+the srtm_ned30_dif map or numbers provided by <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.univar.html">r.univar</a></em>?</span>
 <!--
 <font color="#000066">
 # check the imapct of NULL on map algebra operation
@@ -347,7 +347,7 @@ d.rast landuse96_28m
 r.mapcalc "low_elev_developed = if((elevation &lt; 100 &amp;&amp; elevation > 60) &amp;&amp; (landuse96_28m == 1 || landuse96_28m == 2),1,null())"
 r.mask raster=low_elev_developed
 </code></pre>
-Command <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mask.html">r.mask</a></em> creates a raster map "MASK" in your mapset.
+Command <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mask.html">r.mask</a></em> creates a raster map "MASK" in your mapset.
 
 <p>
 Remove "low_elev_developed" layer if it was added.
@@ -368,7 +368,7 @@ d.rast basin_50K
 <h4>Using coordinates of moving window in map algebra</h4>
 <!-- p. 114<br> -->
 Replace section of SRTM DSM with NED DEM elevation.<br>
-<span class="question">Try to explain how this <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> expression works.</span>
+<span class="question">Try to explain how this <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em> expression works.</span>
 
 <pre><code>r.mapcalc "elev_combined = if(y() &lt; 224274. &amp;&amp; x() > 637455., elevation, elev_srtm_30m)"
 </code></pre>
