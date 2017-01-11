@@ -38,7 +38,7 @@
 <h2>Geospatial Analysis II:  buffers, cost surfaces, least cost path</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="http://www4.ncsu.edu/~akratoc/GRASS_intro/">tutorial</a>
@@ -62,7 +62,7 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_buffers_cost) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 Remove MASK in case it was left over
@@ -70,7 +70,8 @@ from previous assignment (use command <code>r.mask -r</code>).
 <p>
 Change working directory:<br>
 <em>Settings</em> > <em>GRASS working environment</em> > <em>Change working directory</em> > select/create any directory<br>
-or type <code>cd</code> (stands for change directory) into the GUI command console and hit Enter:
+or type <code>cd</code> (stands for change directory) into the GUI
+<em>Console</em> and hit Enter:
 <pre><code>cd
 </code></pre>
 Download all text files with recode rules, color rules and site locations (see above)
@@ -91,7 +92,7 @@ d.rast lakes_buff
 
 <p>
 List categories in land use map to identify cat numbers for developed areas.
-Then run <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em>:
+Then run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em>:
 
 <pre><code>r.category landuse96_28m
 r.mapcalc "developed_lake = if(landuse96_28m==1 || landuse96_28m==2, lakes_buff, null())"
@@ -120,8 +121,8 @@ r.report -n developed_lake units=h
 Set region and create buffers along major roads.<br>
 Intersect developed areas from landuse map with road buffers.<br>
 Transfer the category labels and compute the affected area.<br>
-Run <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.category.html">r.category</a></em> from GUI and browse to the txt file,
-or run <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.category.html">r.category</a></em> command (assuming <a href="data/noise_cats.txt">noise_cats.txt</a>
+Run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.category.html">r.category</a></em> from GUI and browse to the txt file,
+or run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.category.html">r.category</a></em> command (assuming <a href="data/noise_cats.txt">noise_cats.txt</a>
 is in your working directory).
 
 <pre><code>g.region raster=landuse96_28m -p
@@ -143,7 +144,7 @@ d.legend -c noise at=5,25,2,5
 <h4>Find schools affected by high levels of noise</h4>
 Convert schools to raster using CORECAPACI attribute (school capacity).<br>
 Use map algebra to overlay with noise impact buffers and
-compute the number of students exposed to noise (see result of <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.univar.html">r.univar</a></em>).
+compute the number of students exposed to noise (see result of <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.univar.html">r.univar</a></em>).
 
 <pre><code>v.to.rast schools_wake output=schoolscap_10m use=attr attrcolumn=CORECAPACI type=point
 r.mapcalc "schools_noise = if(int(schoolscap_10m) &amp;&amp; roads_buffers == 2, int(schoolscap_10m), null())"
@@ -188,7 +189,7 @@ r.cost -k streets_travtime output=streets_cost start_coordinates=634886,224328
 <p>
 Import the accident point location given in <a href="data/fire_pt.txt">fire_pt.txt</a>
 so that you can display it on the map.<br>
-Run <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.ascii.html">v.in.ascii</a></em> from GUI, use file browser to provide full path to the file
+Run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.ascii.html">v.in.ascii</a></em> from GUI, use file browser to provide full path to the file
 or enter values interactively by pasting the coords into the provided space,
 or run the command assuming the file is in your working directory.
 
@@ -229,7 +230,7 @@ Click on CVLAG to order them and find the lowest cost (shortest time) > 0
 You should see a <a href="img/firestations_table.png">table like this</a>.<br>
 Export firestations with traveltime less than 0.1 hr:
 
-<pre><code>v.out.ascii myfirestations separator=space precision=3 columns=ID,LOCATION,CVLAG where="CVLAG&lt;0.1 AND CVLAG&gt;0"
+<pre><code>v.out.ascii input=myfirestations separator=space precision=3 columns=ID,LOCATION,CVLAG where="CVLAG&lt;0.1 AND CVLAG&gt;0"
 </code></pre>
 
 <p>
@@ -274,7 +275,7 @@ r.describe route_52Hollyb
 
 <p>
 If you would like to display streets_cost surface in 3D as shown in the lecture,
-you need to multiply the surface by 1000 using <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.mapcalc.html">r.mapcalc</a></em> because the numbers
+you need to multiply the surface by 1000 using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em> because the numbers
 in hours are very low.<br>
 Then switch off all layers except for the streets_cost_1000
 and change display to 3D.
@@ -405,7 +406,7 @@ d.rast.leg probability3
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

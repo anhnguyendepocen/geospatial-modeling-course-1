@@ -39,7 +39,7 @@
 <!--Task: Resample raster data, convert between raster and vector data models-->
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="http://www4.ncsu.edu/~akratoc/GRASS_intro/">tutorial</a>
@@ -49,7 +49,7 @@ how to use wxGUI from the first assignment</li>
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
@@ -62,9 +62,9 @@ Click <b>Start GRASS</b>.
 If you prefer to work in GUI, you should be able to find out yourself
 the GUI equivalents for the tasks below.<br>
 Some hints for GUI are included, but
-from now on, most of the instructions will be provided as command line.<br>
+from now on, most of the instructions will be provided as commands for command line.<br>
 Hint for running most of the commands in GUI - type or paste the name of the module
-into the command console and then hit Enter to open the GUI dialog.<br>
+into the command console in the <em>Console</em> tab and then hit Enter to open the GUI dialog.<br>
 <em>Read</em> the manual page for each command you are using for the first time to learn
 what it is doing and what the parameters mean.
 
@@ -77,7 +77,7 @@ with bilinear and bicubic method.
 <p>First, set the computation region extent to our study area
 and set resolution to 30 meters.
 The computational region (region for short) is set using
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/g.region.html">g.region</a></em> module.
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/g.region.html">g.region</a></em> module.
 Here for convenience we use named region which defines both the extent and the resolution.
 This named region is included in the data (location) we are using
 but it is possible to create new named regions and use them to bookmark different study areas.
@@ -86,7 +86,7 @@ but it is possible to create new named regions and use them to bookmark differen
 </code></pre>
 
 <p>
-The <code>-p</code> flag for <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/g.region.html">g.region</a></em> is used to print the region
+The <code>-p</code> flag for <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/g.region.html">g.region</a></em> is used to print the region
 we just set.
 
 <p>
@@ -98,8 +98,8 @@ Then we display the 30m resolution NED elevation raster.
 <p>
 To resample it to 10m resolution, first set the computational region to resolution 10m,
 then resample the raster using the nearest neighbor method.<br>
-Hint: To open the <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.resamp.interp.html">r.resamp.interp</a></em> in GUI, type or paste the module name
-into the <em>Command console</em>, then <em>Enter</em> to open the GUI panel,
+Hint: To open the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.resamp.interp.html">r.resamp.interp</a></em> in GUI, type or paste the module name
+into the <em>Console</em> tab, then <em>Enter</em> to open the GUI dialog,
 don't forget to set the method to nearest under <em>Optional</em> tab.
 
 <pre><code>g.region res=10 -p
@@ -124,7 +124,7 @@ Alternatively, use in command line the following:
 The elevation map "elev_ned10m_nn" looks the same as the original one,
 so now check the resampled elevation surface using the aspect map:
 
-<pre><code>r.slope.aspect elev_ned10m_nn aspect=aspect_ned10m_nn
+<pre><code>r.slope.aspect elevation=elev_ned10m_nn aspect=aspect_ned10m_nn
 </code></pre>
 
 <p>
@@ -150,8 +150,8 @@ Check the interpolated elevation surfaces using aspect maps.
 
 <pre><code>r.resamp.interp elev_ned_30m out=elev_ned10m_bil meth=bilinear
 r.resamp.interp elev_ned_30m out=elev_ned10m_bic meth=bicubic
-r.slope.aspect elev_ned10m_bil aspect=aspect_ned10m_bil
-r.slope.aspect elev_ned10m_bic aspect=aspect_ned10m_bic
+r.slope.aspect elevation=elev_ned10m_bil aspect=aspect_ned10m_bil
+r.slope.aspect elevation=elev_ned10m_bic aspect=aspect_ned10m_bic
 d.rast aspect_ned10m_bil
 d.rast aspect_ned10m_bic
 </code></pre>
@@ -235,8 +235,9 @@ Note that in both command line and GUI you must either enter the full path
 to the file you are saving the image in, or you must know the current working
 directory.
 
-<pre><code>d.vect census_centr icon=basic/circle fcol=green size=10 
-d.vect census_wake2000 col=red  type=boundary
+<pre><code>d.vect census_centr icon=basic/circle fill_color=green size=10
+d.vect census_wake2000 color=red fill_color=none
+d.legend.vect
 d.out.file vect_to_points
 </code></pre>
 
@@ -330,7 +331,7 @@ Convert raster lines to vector lines.
 First, set the region and remove map layers from <em>Layer Manager</em>.
 Then do the conversion.
 <p>
-<span class="question">Explain why we are using <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.thin.html">r.thin</a></em> module</span>.
+<span class="question">Explain why we are using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.thin.html">r.thin</a></em> module</span>.
 You may want to remove all previously used layers from the <em>Layer Manager</em>
 before you start these new computations.
 
@@ -384,7 +385,7 @@ you are working in the command line.
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

@@ -38,7 +38,7 @@
 <h2>Erosion modeling</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="http://www4.ncsu.edu/~akratoc/GRASS_intro/">tutorial</a>
@@ -68,13 +68,14 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_erosion) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
 Change working directory:<br>
 <em>Settings</em> > <em>GRASS working environment</em> > <em>Change working directory</em> > select/create any directory<br>
-or type <code>cd</code> (stands for change directory) into the GUI command console and hit Enter:
+or type <code>cd</code> (stands for change directory) into the GUI
+<em>Console</em> and hit Enter:
 <pre><code>cd
 </code></pre>
 Download all text files with recode rules, color rules and site locations (see above)
@@ -87,7 +88,7 @@ without the need to specify the full path to the file.
 # for SW Wake area at 10m resolution
 </font>
 g.region swwake_10m -p
-r.watershed -s elevation thresh=50000 accum=flowaccum_10m length=lsfac2d
+r.watershed -s elevation=elevation thresh=50000 accum=flowaccum_10m length=lsfac2d
 r.colors lsfac2dfp co=gyr -e
 # <b>erase and zoom display to computational region</b>
 d.erase
@@ -114,8 +115,8 @@ Compare impact of the power function exponents on the erosion pattern.<br>
 and which models stronger influence of slope?</span>
 
 <pre><code>g.region raster=elev_lid792_1m -p
-r.slope.aspect elev_lid792_1m slope=slope_1m aspect=aspect_1m
-r.flow elev_lid792_1m flowaccumulation=flowacc_1m
+r.slope.aspect elevation=elev_lid792_1m slope=slope_1m aspect=aspect_1m
+r.flow elevation=elev_lid792_1m flowaccumulation=flowacc_1m
 r.mapcalc "lsfac3d_1m = 1.2 * pow(flowacc_1m * 1./22.1,0.2) * pow(sin(slope_1m)/0.09,1.3)"
 r.mapcalc "lsfac3d_s1_1m = 1.5 * pow(flowacc_1m * 1./22.1,0.5) * pow(sin(slope_1m)/0.09,1.0)"
 r.colors lsfac3d_s1_1m color=gyr -e
@@ -139,7 +140,7 @@ d.out.file lsfac_s10
 <h4>Compute soil detachment for spatially variable land cover</h4>
 
 Set region to rural area and recode landcover_1m to cfactor
-using the <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.recode.html">r.recode</a></em> module.
+using the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.recode.html">r.recode</a></em> module.
 Assign special color table and display result.<br>
 
 <pre><code>g.region rural_1m -p
@@ -154,7 +155,7 @@ Compute the USLE3D equation using map algebra,
 cfactorbare_1m is the same as cfactor_1m,
 cfactorgrow_1m has landuse recoded for summer conditions.<br>
 Specify units of the raster maps using
-the <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.support.html">r.support</a></em> module.<br>
+the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.support.html">r.support</a></em> module.<br>
 <span class="question">Compare erosion rates and distribution
 for winter (bare) and summer conditions.</span>
  
@@ -206,8 +207,8 @@ r.mapcalc "qsy = sedflow_1m * sin(aspect_1m)"
 Compute change of sediment flow in the x and y directions
 and then change in the direction of flow using divergence.<br>
 
-<pre><code>r.slope.aspect qsx dx=qsx_dx
-r.slope.aspect qsy dy=qsy_dy
+<pre><code>r.slope.aspect elevation=qsx dx=qsx_dx
+r.slope.aspect elevation=qsy dy=qsy_dy
 r.mapcalc "erdep = qsx_dx + qsy_dy"
 r.info -r erdep
 r.colors erdep rules=erdep_color.txt
@@ -221,7 +222,7 @@ Display elev_lid792_1m in 3D and drape over erdep as color (switch off all layer
 
 <h4>Compute summary statistics</h4>
 
-Use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.recode.html">r.recode</a></em> to classify erosion/deposition and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.category.html">r.category</a></em>
+Use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.recode.html">r.recode</a></em> to classify erosion/deposition and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.category.html">r.category</a></em>
 to add labels (stable, high erosion, etc) to individual categories:
 
 <pre><code>r.recode erdep output=erdep_class rules=erdep_class.txt
@@ -268,7 +269,7 @@ sum: -2374.473814
 The units are tons/(acre.year), but our cells are 1 m<sup>2</sup>.
 Therefore we have to divide by 4046 (1 acre = 4046 m<sup>2</sup>)
 to get total ton per year transported from the watershed.
-You can use the Python shell do the division.
+You can use the Python shell in the <em>Python</em> tab do the division.
 
 </main>
 
@@ -276,7 +277,7 @@ You can use the Python shell do the division.
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

@@ -38,7 +38,7 @@
 <h2>Flow routing and watershed analysis</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="http://www4.ncsu.edu/~akratoc/GRASS_intro/">tutorial</a>
@@ -58,13 +58,14 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_hydrology) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
 Change working directory:<br>
 <em>Settings</em> > <em>GRASS working environment</em> > <em>Change working directory</em> > select/create any directory<br>
-or type <code>cd</code> (stands for change directory) into the GUI command console and hit Enter:
+or type <code>cd</code> (stands for change directory) into the GUI
+<em>Console</em> and hit Enter:
 <pre><code>cd
 </code></pre>
 Download all text files with site locations (see above)
@@ -81,7 +82,7 @@ Compute flow direction, flow accumulation and subwatersheds
 with approx. size of 10000 cells from 30m NED.
 
 <pre><code>g.region raster=elev_ned_30m -p
-r.watershed -s elev_ned_30m threshold=10000 accumulation=accum_10K drainage=draindir_10K basin=basin_10K
+r.watershed -s elevation=elev_ned_30m threshold=10000 accumulation=accum_10K drainage=draindir_10K basin=basin_10K
 </code></pre>
 
 <p>
@@ -117,7 +118,7 @@ d.out.file mystreams
 <h3>Create map of DEM depressions</h3>
 Depression filling is often necessary for certain flow routing algorithms but it can alter the elevation data significantly. 
 Find out how extensive the depressions are in our DEM.<br>
-Note that <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.watershed.html">r.watershed</a></em> doesn't need any depression filling thanks to
+Note that <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.watershed.html">r.watershed</a></em> doesn't need any depression filling thanks to
 its underlying algorithm which uses least cost path to get over depressions.
 
 <pre><code>g.region raster=elevation -p
@@ -144,7 +145,7 @@ d.out.file depressions
 Set region to the high resolution study area and zoom to it:
 
 <pre><code>g.region rural_1m -p
-r.watershed -as elev_lid792_1m threshold=5000 accumulation=accum_5K drainage=draindir_5K basin=basin_5K
+r.watershed -as elevation=elev_lid792_1m threshold=5000 accumulation=accum_5K drainage=draindir_5K basin=basin_5K
 </code></pre>
 
 <p>
@@ -203,7 +204,7 @@ d.rast elev_lidcarved_1m
 <span class="question">What is the difference between accum_5K, accumc_5K1m and streams?<br>
 Explain the advantage and disadvantage of carving.</span>
 
-<pre><code>r.watershed -as elev_lidcarved_1m threshold=50000 accumulation=accumc_5K1m
+<pre><code>r.watershed -as elevation=elev_lidcarved_1m threshold=50000 accumulation=accumc_5K1m
 d.rast accumc_5K1m values=1500-10000000
 d.vect streams
 d.out.file streamcarved
@@ -217,8 +218,8 @@ Remove or switch off all previous layers.
 
 <!-- d.erase -->
 <pre><code>g.region raster=elev_lid792_1m -p
-r.flow elev_lid792_1m flowline=flowlines flowlength=flowlg_1m flowaccumulation=flowacc_1m
-r.flow -u elev_lid792_1m flowlength=flowlgup_1m flowaccumulation=flowaccup_1m
+r.flow elevation=elev_lid792_1m flowline=flowlines flowlength=flowlg_1m flowaccumulation=flowacc_1m
+r.flow -u elevation=elev_lid792_1m flowlength=flowlgup_1m flowaccumulation=flowaccup_1m
 </code></pre>
 
 <p>
@@ -235,7 +236,7 @@ d.out.file flowlines
 <h3>Compare the multiple flow direction result with D8 and Dinf</h3>
 <span class="question">Compare the result of accum_5K and accum_mfd_5K1m. Why are they different,
 which is more accurate and why?</span>
-<pre><code>r.watershed -a elev_lid792_1m threshold=50000 accumulation=accum_mfd_5K1m
+<pre><code>r.watershed -a elevation=elev_lid792_1m threshold=50000 accumulation=accum_mfd_5K1m
 d.rast accum_mfd_5K1m
 d.vect streams
 d.out.file stream_mfd
@@ -255,7 +256,7 @@ Note: switch off all layers except for elev_lid792_1m.
 <h3>Create a map of flooded area</h3>
 Create a map of flooded area for a given water level and seed point:
 
-<pre><code>r.lake elev_lid792_1m water_level=113.5 lake=flood1 coordinates=638728,220278
+<pre><code>r.lake elevation=elev_lid792_1m water_level=113.5 lake=flood1 coordinates=638728,220278
 d.rast elev_lid792_1m
 d.rast flood1
 d.out.file floodedarea
@@ -266,8 +267,8 @@ Increase water level to 113.7m and 114.0m and create flooded
 area maps at these two levels.
 
 <!--
-r.lake elev_lid792_1m wl=113.7 lake=flood2 coordinates=638728,220278
-r.lake elev_lid792_1m wl=114.0 lake=flood3 coordinates=638728,220278
+r.lake elevation=elev_lid792_1m wl=113.7 lake=flood2 coordinates=638728,220278
+r.lake elevation=elev_lid792_1m wl=114.0 lake=flood3 coordinates=638728,220278
 d.rast flood2
 d.rast flood3
 # note for the GRASSbook example
@@ -321,7 +322,7 @@ d.rast tci_1m
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

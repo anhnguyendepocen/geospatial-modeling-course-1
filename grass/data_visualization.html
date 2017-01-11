@@ -38,16 +38,16 @@
 <h2>Data display and visualization</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="http://www4.ncsu.edu/~akratoc/GRASS_intro/">tutorial</a>
 how to use wxGUI from the first assignment</li>
-<li>Screen captures for 3D visualization with wxnviz in GRASS6.4.3RC2 (similar to GRASS7)
+<li>Screen captures for 3D visualization with 3D view (wxNVIZ) in GRASS GIS 6.4.3RC2 (similar to GRASS GIS 7)
 <ul>
-<li><a href="http://courses.ncsu.edu/mea582/common/media/03/sc_wxnviz1_edit1large.mov"> Visualization in GRASS I: surface (71MB)</a></li>
-<li><a href="http://courses.ncsu.edu/mea582/common/media/03/sc_wxnviz2_edit2.mov"> Visualization in GRASS II: draping points and lines (45MB)</a></li>
-<li><a href="http://courses.ncsu.edu/mea582/common/media/03/sc_wxnviz3_edit.mov"> Visualization in GRASS III: cutting planes (62MB)</a></li>
+<li><a href="https://youtu.be/TRNUJy_ctc0">Visualization in GRASS I: surface</a></li>
+<li><a href="https://youtu.be/yaf4Bzv7F-c">Visualization in GRASS II: draping points and lines</a></li>
+<li><a href="https://youtu.be/xo_jJHgtbR4">Visualization in GRASS III: cutting planes</a></li>
 </ul></li>
 </ul>
 
@@ -59,8 +59,16 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_data_visualization) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
+
+
+<h3>Changing the default font</h3>
+
+Change the default font used for map rendering, use:
+<em>Settings</em> > <em>Preferences</em> > <em>Map Display</em>.
+Pick a new default font and <em>Save</em> the settings.
+
 
 <h3>Visualization in 3D perspective</h3>
 
@@ -91,11 +99,11 @@ because we will be working with a smaller, high resolution region.
 <p>
 Start GRASS7 with your previous MAPSET.
 First set region to "rural_1m", then interpolate surface with vegetation
-from multiple return lidar points using the module <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.surf.rst.html">v.surf.rst</a></em>
+from multiple return lidar points using the module <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.surf.rst.html">v.surf.rst</a></em>
 (we will explain interpolation later on).
 
 <pre><code>g.region rural_1m -p
-v.surf.rst elev_lidrural_mrpts elevation=elev_lidruralmr_1m npmin=120 segmax=25 tension=40 smooth=1.0
+v.surf.rst input=elev_lidrural_mrpts elevation=elev_lidruralmr_1m npmin=120 segmax=25 tension=40 smooth=1.0
 </code></pre>
 
 <p>
@@ -144,7 +152,7 @@ d.rast geology_30m
 d.rast elevation val=50-80,120-160 -o
 -->
 <h4>Change colors for raster maps</h4>
-There are many ways how to do it see <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.colors.html">r.colors</a></em> manual).
+There are many ways how to do it see <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.colors.html">r.colors</a></em> manual).
 <p>
 First create your own copy of the elevation map (see the command below).<br>
 Display it by Add raster > "myelev".
@@ -200,7 +208,7 @@ by e.g. /Users/john/mycolor.txt on Mac OS X):
 <p>
 Note that you can combine color RGB and name definitions
 as well as % and cat/val to create complex custom color tables
-and store them in a text file for future use, see the examples in <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.colors.html">r.colors</a></em> man page.
+and store them in a text file for future use, see the examples in <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.colors.html">r.colors</a></em> man page.
 
 <h4>Compare the use of equal interval and histogram equalized color table for slope</h4>
 
@@ -271,12 +279,28 @@ d.vect roadsmajor color=yellow
 d.out.file mylandsat
 </code></pre>
 
-<h3>Export NC precipitation stations data to kml and post in Google Earth</h3>
-If your are running the command in GUI do not forget to click point for data type.
-To view the data in Google Earth just drag and drop the kml file in the Google Earth window.
+<h3>Export NC precipitation stations data to KML and post in Google Earth</h3>
 
-<pre><code>g.region nc_500m
-v.out.ogr precip_30ynormals output=c:\temp\precipitation.kml format=KML type=point
+To see what you are exporting, add the <em>precip_30ynormals</em> raster
+or use the following command:
+
+<pre><code>d.vect precip_30ynormals
+</code></pre>
+
+You may need to use right click in <em>Layers</em> to zoom to the extent
+of the whole vector map. Then use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.out.ogr.html">v.out.ogr</a></em> to
+export the vector map in the KML format.
+If your are running the command in GUI do not forget to click point for
+data type. To view the data in Google Earth just drag and drop the KML
+file in the Google Earth window.
+
+<pre><code>v.out.ogr precip_30ynormals output=precipitation.kml format=KML type=point
+</code></pre>
+
+You need to set the file path to the desired directory or work using the
+current working directory. On MS Windows, you may do something like this:
+
+<pre data-run="no"><code>v.out.ogr precip_30ynormals output=C:\temp\precipitation.kml format=KML type=point
 </code></pre>
 
 <h3>Optional part</h3>
@@ -375,7 +399,7 @@ d.rast basins_shaded_10m
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
