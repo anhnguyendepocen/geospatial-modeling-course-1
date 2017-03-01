@@ -37,7 +37,7 @@
 <!-- This is a generated file. Do not edit. -->
 <h2>Geomorphometry I: Terrain Modeling</h2>
 <p>
-Resources: <a href="http://grass.osgeo.org/grass70/manuals/index.html">
+Resources: <a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a>,
 <a href="http://liblas.org/"> libLAS tools for lidar data conversions</a>
 
@@ -48,10 +48,23 @@ Download the Raleigh 2013 lidar data as LAS file and orthophoto:
 <li><a href="http://courses.ncsu.edu/mea582/common/media/01/ortho_0793_016_ncspm.zip" download>Orthophoto geotif (mosaic at 1ft resolution)</a></li>
 </ul>
 
+<h3>Software support</h3>
+
+The GRASS GIS installation on your computer may not support
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.lidar.html">v.in.lidar</a></em>
+modules. You can try them, e.g. using
+
+<pre><code>r.in.lidar --help
+</code></pre>
+
+If the modules don't work for you, please use the
+<a href="terrain_modeling_ascii.html">ASCII file based version</a>
+of the assignment based on.
+
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
@@ -75,7 +88,7 @@ without the need to specify the full path to the file.
 
 <!-- p. 249<br> -->
 <h3>Analyze bare earth and multiple return lidar data properties by binning</h3>
-Import the points using <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.lidar.html">v.in.lidar</a></em>.
+Import the points using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.lidar.html">v.in.lidar</a></em>.
 We can specify which class and which return (first, middle, last) we want to import.<br>
 We can see the classification either in metadata distributed with the lidar data
 or it can be displayed with <a href="http://liblas.org/">lasinfo</a> tool (in case lasinfo command is not available, skip it.):
@@ -92,7 +105,7 @@ Note: if you have any problems with the files, review the instructions above or
 use v.in.lidar GUI dialog to browse to get the path to the files.
 <p>
 Set the region from the imported point file with resolution of 1 meter.
-Compute raster maps (with <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.lidar.html">r.in.lidar</a></em>) representing number of points per 1 m grid cell.<br>
+Compute raster maps (with <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em>) representing number of points per 1 m grid cell.<br>
 Compare point densities for bare earth, first return.
 
 <pre><code>g.region vect=elev_lid793016_1r res=1 -p
@@ -196,8 +209,8 @@ You can set dmin=1 to make the interpolation run faster (see the manual).<br>
 Be patient, it can take a few minutes to run depending on the computer power.<br>
 
 <pre><code>g.region res=1 -ap
-v.surf.rst elev_lid793016_be elevation=elev_lid793016_be_1m npmin=120 segmax=25 dmin=1
-v.surf.rst elev_lid793016_1r elevation=elev_lid793016_1r_1m npmin=120 segmax=25 tension=100 smooth=0.5 dmin=1
+v.surf.rst input=elev_lid793016_be elevation=elev_lid793016_be_1m npmin=120 segmax=25 dmin=1
+v.surf.rst input=elev_lid793016_1r elevation=elev_lid793016_1r_1m npmin=120 segmax=25 tension=100 smooth=0.5 dmin=1
 r.colors elev_lid793016_be_1m color=elevation
 r.colors elev_lid793016_1r_1m color=elevation
 d.rast elev_lid793016_be_1m
@@ -273,7 +286,7 @@ nviz elev_lidrural_1m,elev_lidrurfirst_1m
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

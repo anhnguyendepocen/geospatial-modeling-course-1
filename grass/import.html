@@ -52,11 +52,11 @@ the CRS you want.
 <h3>Importing data in common vector and raster formats</h3>
 
 <p>
-For basic import of raster and vector files, use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.import.html">r.import</a></em>
-and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.import.html">v.import</a></em>, respectively.
+For basic import of raster and vector files, use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.import.html">r.import</a></em>
+and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.import.html">v.import</a></em>, respectively.
 These modules will reproject the input data if necessary.
 If the input data's CRS matches the Location's CRS, we can use
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.gdal.html">r.in.gdal</a></em> or <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.ogr.html">v.in.ogr</a></em>
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.gdal.html">r.in.gdal</a></em> or <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.ogr.html">v.in.ogr</a></em>
 for importing raster and vector.
 
 <p>
@@ -64,24 +64,24 @@ Alternatively, you can use a two-step approach
 for the cases when the data's CRS doesn't match the Location's CRS.
 First create a new temporary Location
 based on the CRS of the data you want to import, switch to this Location
-and then use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.gdal.html">r.in.gdal</a></em> or <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.ogr.html">v.in.ogr</a></em>
+and then use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.gdal.html">r.in.gdal</a></em> or <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.ogr.html">v.in.ogr</a></em>
 to import raster and vector data, respectively. Then switch to the Location
 of your project and use
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.proj.html">r.proj</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.proj.html">v.proj</a></em>
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.proj.html">r.proj</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.proj.html">v.proj</a></em>
 to reproject data from the temporary Location to your project Location.
 This approach is necessary for formats which are not supported by
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.import.html">r.import</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.import.html">v.import</a></em> modules.
-Modules  <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.proj.html">r.proj</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.proj.html">v.proj</a></em>
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.import.html">r.import</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.import.html">v.import</a></em> modules.
+Modules  <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.proj.html">r.proj</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.proj.html">v.proj</a></em>
 can be also used for bringing raster and vector maps from one Location to another.
 
 <p>
-Modules <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.gdal.html">r.in.gdal</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.ogr.html">v.in.ogr</a></em>
+Modules <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.gdal.html">r.in.gdal</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.ogr.html">v.in.ogr</a></em>
 check whether the CRS of the imported data matches the Location's CRS.
 Sometimes the CRS of imported data is not specified correctly
 or is missing and therefore import fails.
 If you know that the actual CRS matches the Location's CRS,
-it is appropriate to use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.gdal.html">r.in.gdal</a></em>'s
-or <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.ogr.html">v.in.ogr</a></em>'s -o flag to overwrite the projection
+it is appropriate to use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.gdal.html">r.in.gdal</a></em>'s
+or <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.ogr.html">v.in.ogr</a></em>'s -o flag to overwrite the projection
 check and import the data as they are.
 
 <p>
@@ -124,7 +124,7 @@ Y in the second one. Don't forget to specify correct column delimiter.
 <p>
 If the data are not in the CRS we are using, create a new Location
 with matching CRS,
-import the data and use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.proj.html">v.proj</a></em> as described above.
+import the data and use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.proj.html">v.proj</a></em> as described above.
 
 
 <h3>Importing lidar point clouds</h3>
@@ -139,7 +139,7 @@ about a LAS file using <em>lasinfo</em> tool:
 <pre><code>lasinfo tile_0793_016_spm.las
 </code></pre>
 <p>
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.lidar.html">r.in.lidar</a></em> module can be used to scan the spatial extent
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em> module can be used to scan the spatial extent
 of the dataset:
 
 <pre><code>r.in.lidar input=tile_0793_016_spm.las -s
@@ -150,7 +150,7 @@ of the dataset:
 
 Before creating the actual raster with elevation, we need to decide the extent
 and the resolution we will use for the binning. We can use
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.lidar.html">r.in.lidar</a></em> module for that by setting the resolution
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em> module for that by setting the resolution
 directly and using a -e flag to use dataset extent instead of taking it from
 the computational region.
 We are interested in the density of points, so we use <code>method=n</code>:
@@ -159,8 +159,8 @@ We are interested in the density of points, so we use <code>method=n</code>:
 </code></pre>
 
 After determining the optimal resolution for binning and the desired area,
-we can use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/g.region.html">g.region</a></em> to set the computational region.
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.lidar.html">r.in.lidar</a></em> without the additional parameters above
+we can use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/g.region.html">g.region</a></em> to set the computational region.
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em> without the additional parameters above
 will create a raster map from points using binning with resolution and extent
 taken from the computational region:
 
@@ -176,8 +176,8 @@ points and interpolate a raster.
 
 <p>
 Supposing that we already determined the desired extent and resolution
-(using <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.lidar.html">r.in.lidar</a></em> as described above) we can use
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.lidar.html">v.in.lidar</a></em> lidar for import (and using class filter
+(using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em> as described above) we can use
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.lidar.html">v.in.lidar</a></em> lidar for import (and using class filter
 to get only ground points):
 
 <pre><code>v.in.lidar input=tile_0793_016_spm.las output=tile_0793_016 class=2 -r -t -b
@@ -187,7 +187,7 @@ This import only the points of class 2 (ground)
 in the current computational region
 without the attribute table and building the topology.
 Then we follow with interpolation using,
-e.g. <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.surf.rst.html">v.surf.rst</a></em> module:
+e.g. <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.surf.rst.html">v.surf.rst</a></em> module:
 
 <pre><code>v.surf.rst input=tile_0793_016 elevation=tile_0793_016_elevation slope=tile_0793_016_slope aspect=tile_0793_016_aspect npmin=100 tension=20 smooth=1
 </code></pre>
@@ -208,13 +208,13 @@ into NAD83/North Carolina in meters (EPSG:3358):
 
 <h4>Importing data with broken projection information</h4>
 
-Modules <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.lidar.html">r.in.lidar</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.lidar.html">v.in.lidar</a></em>
+Modules <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.lidar.html">v.in.lidar</a></em>
 check whether the CRS of the imported data matches the Location's CRS.
 Sometimes the CRS of imported data is not specified correctly
 or is missing and therefore import fails.
 If you know that the actual CRS matches the Location's CRS,
-it is appropriate to use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.in.lidar.html">r.in.lidar</a></em>'s
-or <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.in.lidar.html">v.in.lidar</a></em>'s -o flag to overwrite the projection
+it is appropriate to use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em>'s
+or <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.lidar.html">v.in.lidar</a></em>'s -o flag to overwrite the projection
 check and import the data as they are.
 
 <pre><code>r.in.lidar input=tile_0793_016_spm.las -s -o
@@ -226,7 +226,7 @@ check and import the data as they are.
 If two GRASS GIS users want to exchange data, they can use GRASS GIS native
 exchange format &ndash; <em>packed map</em>. A vector or raster map can be
 exported from a GRASS Location in this format using
-<em class="module"><a href="https://grass.osgeo.org/grass70/manuals/v.pack.html">v.pack</a></em> or <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.pack.html">r.pack</a></em> respectively.
+<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.pack.html">v.pack</a></em> or <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.pack.html">r.pack</a></em> respectively.
 This format preserves everything for a map in a way as it is stored in
 a GRASS Database. <em>Projection of the source and target GRASS Locations
 must be the same.</em>
@@ -246,8 +246,8 @@ in the same way as any other directories on the computer.
 <h3>Further resources</h3>
 
 <ul>
-    <li><a href="http://grass.osgeo.org/grass70/manuals">GRASS GIS manual</a></li>
-    <li><a href="https://grass.osgeo.org/grass71/manuals/grass_database.html">About GRASS GIS Database structure</a></li>
+    <li><a href="http://grass.osgeo.org/grass72/manuals">GRASS GIS manual</a></li>
+    <li><a href="https://grass.osgeo.org/grass72/manuals/grass_database.html">About GRASS GIS Database structure</a></li>
     <li><a href="https://grasswiki.osgeo.org/wiki/GRASS_GIS_for_ArcGIS_users">GRASS GIS for ArcGIS users</a></li>
     <li><a href="http://epsg.io/">epsg.io</a> (Repository of EPSG codes)</li>
 </ul>
@@ -258,7 +258,7 @@ in the same way as any other directories on the computer.
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

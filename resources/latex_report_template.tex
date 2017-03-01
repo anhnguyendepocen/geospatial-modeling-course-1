@@ -1,14 +1,11 @@
 % Assignment report LaTeX template
 % for class Geospatial Modeling and Analysis
-% GIS/MEA582-601 Spring 2014
+% GIS/MEA582-601
 
 
 \documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
-% comment the following line when compiling the real document (it causes demo mode where images are black)
-\usepackage[demo]{graphicx}
-% uncomment the following line when compiling the real document
-% \usepackage{graphicx}
+\usepackage{graphicx}
 \usepackage[colorlinks=false]{hyperref}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -22,20 +19,23 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\gmodule}[1]{\href{http://grass.osgeo.org/grass70/manuals/html70_user/#1.html}{\emph{#1}}}
+\newcommand{\gmodule}[1]{\href{https://grass.osgeo.org/grass72/manuals/#1.html}{\emph{#1}}}
 \newcommand{\asixmodule}[1]{\emph{#1}}
 \newcommand{\asevenmodule}[1]{\emph{#1}}
 \newcommand{\module}[1]{\emph{#1}}
 \newcommand{\grasslink}{\href{http://grass.osgeo.org/}{GRASS GIS}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\authorName}{Your Name}
-\newcommand{\classSemestr}{Fall 2015}
-\newcommand{\classId}{GIS/MEA582-601}
-\newcommand{\className}{Geospatial Modeling and Analysis}
-\newcommand{\classWeb}{\url{http://courses.ncsu.edu/mea582/common/GIS_anal_assign/GIS_Anal_Assignall.html}}
-\newcommand{\assignmentTopic}{Assignment report \LaTeX{} template}
+% you can fill the following and use the commands in the header,
+% the title, and the PDF metadata
+% now, plain text is used and repeated
+\newcommand{\authorName}{}
+\newcommand{\classSemestr}{}
+\newcommand{\classId}{}
+\newcommand{\className}{}
+\newcommand{\assignmentTopic}{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -46,7 +46,7 @@
 % 
 % % default fancy page style
 \fancyhf{}
-\fancyhead[R]{\textit{\classId, \classSemestr, \authorName}}
+\fancyhead[R]{\textit{GIS/MEA582, Spring 2017, Your Name}}
 
 \fancyfoot[R]{\thepage}
 % 
@@ -57,21 +57,18 @@
 \renewcommand{\footrulewidth}{0pt}
 }
 % 
-\title{\classId, \classSemestr \\ \className \\ \assignmentTopic}
-\author{\authorName}
+\title{GIS/MEA582, Spring 2017 \\ Geospatial Modeling and Analysis \\ Assignment report \LaTeX{} template}
+\author{Your Name}
 \date{\today}
 % 
 % 
 \hypersetup{
-    pdftitle={\assignmentTopic},
-    pdfsubject={\classId, \className, \classSemestr},
-    pdfauthor={\authorName},
+    pdftitle={Assignment report \LaTeX{} template},
+    pdfsubject={GIS/MEA582, Spring 2017, Geospatial Modeling and Analysis},
+    pdfauthor={Your Name},
     pdfkeywords={GIS} {GRASS} {GRASS GIS} {open source}
                 {free and open source} {ArcGIS} {ArcMap} {ESRI},
 }
-
-
-
 
 % rules for floats
 % setting rules which are much less strict than default
@@ -147,35 +144,32 @@ at several spatial extents and resolutions\ldots
 % sizes are predifined in the preamble (before \begin{document}) but can be changed
 % filename can be without directory when it is in the directories specfied in the preamble
 % filename's extension can be ommited for .png, .jpg and .pdf
-% don't forget to replace \usepackage[demo]{graphicx} by \usepackage{graphicx}
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{\twobytwoimgwidth}
-    \includegraphics[width=\textwidth]{filename}
+    \includegraphics[width=\textwidth]{report_template_image}
     \caption{}
 %     \label{fig:afigure}
   \end{subfigure}%
   ~ % ~, \quad, \qquad etc. or \\
   \begin{subfigure}[b]{\twobytwoimgwidth}
-    \includegraphics[width=\textwidth]{filename}
+    \includegraphics[width=\textwidth]{report_template_image}
     \caption{}
 %     \label{fig:}
   \end{subfigure}
   \\[0.01\textheight]
     \begin{subfigure}[b]{\twobytwoimgwidth}
-    \includegraphics[width=\textwidth]{filename}
+    \includegraphics[width=\textwidth]{report_template_image}
     \caption{}
 %     \label{fig:}
   \end{subfigure}
   ~
   \begin{subfigure}[b]{\twobytwoimgwidth}
-    \includegraphics[width=\textwidth]{filename}
+    \includegraphics[width=\textwidth]{report_template_image}
     \caption{}
 %     \label{fig:}
   \end{subfigure}%
-  \caption{A figure with four subfigures (images).
-    Note that the black boxes are coming from the demo mode of graphicx package
-    and should be disabled for the actual report}
+  \caption{A figure with four subfigures (images).}
   \label{fig:afigure}
 \end{figure}
 
@@ -203,8 +197,7 @@ cells:      168100
 \end{verbatim}
 For emphasis use \verb|\emph{...}| command and for short text which should be shown
 verbatim in monospace font use command \verb|\verb+...+| or \verb+\verb|...|+.
-Remove \verb|[demo]| from the \verb|\usepackage[demo]{graphicx}| command
-to make the actual images show.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Discussion}
@@ -227,7 +220,7 @@ and that it can be different from the resolution of the displayed raster.
 % more templates to include figures
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\oneimgwidth]{filename}
+  \includegraphics[width=\oneimgwidth]{report_template_image}
   \caption{Image description}
   \label{fig:figure-internal-label}
 \end{figure}
@@ -235,13 +228,13 @@ and that it can be different from the resolution of the displayed raster.
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{\twoimgwidth}
-    \includegraphics[width=\textwidth]{filename}
+    \includegraphics[width=\textwidth]{report_template_image}
     \caption{Left figure}
 %     \label{fig:}
   \end{subfigure}%
   ~ % ~, \quad, \qquad etc. or \\
   \begin{subfigure}[b]{\twoimgwidth}
-    \includegraphics[width=\textwidth]{filename}
+    \includegraphics[width=\textwidth]{report_template_image}
     \caption{Right figure}
 %     \label{fig:}
   \end{subfigure}

@@ -38,11 +38,11 @@
 <h2>Spatial interpolation and approximation II: splines</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="http://www4.ncsu.edu/~akratoc/GRASS_intro/">tutorial</a>
-how to use wxGUI from the first assignment</li>
+how to use GUI from the first assignment</li>
 </ul>
 
 <p>
@@ -56,7 +56,7 @@ Text files with color rules:
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
@@ -83,9 +83,9 @@ Compute aspect simultaneously with interpolation and
 <span class="question">evaluate impact of tension by using tension=40 (default), tension=10 and tension=160.</span>
 
 <pre><code>g.region rural_1m res=1 -p
-v.surf.rst elev_lid792_randpts elevation=elev_rstdef_1m zcolumn=value aspect=asp_rstdef_1m segmax=30 npmin=140
-v.surf.rst elev_lid792_randpts elevation=elev_rstt10_1m aspect=asp_rstt10_1m zcolumn=value tension=10 segmax=30 npmin=140
-v.surf.rst elev_lid792_randpts elevation=elev_rstt160_1m aspect=asp_rstt160_1m zcolumn=value tension=160 segmax=30 npmin=140
+v.surf.rst input=elev_lid792_randpts elevation=elev_rstdef_1m zcolumn=value aspect=asp_rstdef_1m segmax=30 npmin=140
+v.surf.rst input=elev_lid792_randpts elevation=elev_rstt10_1m aspect=asp_rstt10_1m zcolumn=value tension=10 segmax=30 npmin=140
+v.surf.rst input=elev_lid792_randpts elevation=elev_rstt160_1m aspect=asp_rstt160_1m zcolumn=value tension=160 segmax=30 npmin=140
 </code></pre>
 
 <p>
@@ -116,9 +116,9 @@ For different values of smoothing
 compare deviation stats for smoothing 0.1 and 10.<br>
 Find root mean square deviation rmse.
 
-<pre><code>v.surf.rst elev_lid792_randpts elevation=elev_rstdef_1mb zcolumn=value smooth=0.1 deviations=elev_rstdef_devi segmax=30 npmin=140
+<pre><code>v.surf.rst input=elev_lid792_randpts elevation=elev_rstdef_1mb zcolumn=value smooth=0.1 deviations=elev_rstdef_devi segmax=30 npmin=140
 v.build elev_rstdef_devi
-v.surf.rst elev_lid792_randpts elevation=elev_rstsm10_1mb zcolumn=value smooth=10 deviations=elev_rstsm10_devi segmax=30 npmin=140
+v.surf.rst input=elev_lid792_randpts elevation=elev_rstsm10_1mb zcolumn=value smooth=10 deviations=elev_rstsm10_devi segmax=30 npmin=140
 v.build elev_rstsm10_devi
 v.info -c elev_rstdef_devi
 v.univar elev_rstdef_devi column=flt1 type=point
@@ -133,8 +133,8 @@ Compute and display deviations maps using same color table.
 You need to use custom color table to see the results well.<br>
 Note that we are interpolating here the deviations, not the given elevations.
 
-<pre><code>v.surf.rst elev_rstdef_devi elevation=elev_rstdef_devi zcolumn=flt1 segmax=30 npmin=140
-v.surf.rst elev_rstsm10_devi elevation=elev_rstsm10_devi zcolumn=flt1 segmax=30 npmin=140
+<pre><code>v.surf.rst input=elev_rstdef_devi elevation=elev_rstdef_devi zcolumn=flt1 segmax=30 npmin=140
+v.surf.rst input=elev_rstsm10_devi elevation=elev_rstsm10_devi zcolumn=flt1 segmax=30 npmin=140
 </code></pre>
 
 <p>
@@ -156,7 +156,7 @@ d.out.file elev_rstsm10_devi
 Compute predictive error of interpolation for each point
 using cross-validation (no raster output, only points with pred. errors).
 
-<pre><code>v.surf.rst -c elev_lid792_randpts zcolumn=value cvdev=elev_rstdef_cv npmin=120 segmax=35
+<pre><code>v.surf.rst -c input=elev_lid792_randpts zcolumn=value cvdev=elev_rstdef_cv npmin=120 segmax=35
 v.build elev_rstdef_cv
 v.univar elev_rstdef_cv column=flt1 type=point
 </code></pre>
@@ -167,8 +167,9 @@ where the sampling is inadequate.</span><br>
 Optionally, to view the result in 3D use "elev_rstdef_1mb" for elevation (switch off everything else)
 and drape the crossvalidation map "elev_rstdef_cv" as color.
 
-<pre><code>v.surf.rst elev_rstdef_cv elevation=elev_rstdef_cv zcolumn=flt1
+<pre><code>v.surf.rst input=elev_rstdef_cv elevation=elev_rstdef_cv zcolumn=flt1
 r.colors elev_rstdef_cv raster=elev_rstsm10_devi
+<!-- d.erase -->
 d.rast elev_rstdef_cv
 d.vect elev_rstdef_cv size=2
 d.legend elev_rstdef_cv at=2,50,2,6
@@ -200,7 +201,7 @@ d.vect elev_lid792_cont1m col=yellow
 
 <h3>Interpolate precipitation with influence of topography</h3>
 
-Set the 3D region (read the man page for <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/g.region.html">g.region</a></em>).<br>
+Set the 3D region (read the man page for <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/g.region.html">g.region</a></em>).<br>
 We set <em>tbres</em> to high value - we have just a single level
 because we are not computing the 3D raster (see lecture for more details).
 
@@ -216,7 +217,7 @@ We will use mask during the interpolation.
 
 <pre><code>r.mask raster=ncmask_500m
 v.info -c precip_30ynormals
-v.surf.rst precip_30ynormals elevation=precip_annual_500m zcolumn=annual segmax=700
+v.surf.rst input=precip_30ynormals elevation=precip_annual_500m zcolumn=annual segmax=700
 </code></pre>
 
 <p>
@@ -241,7 +242,7 @@ use precip_anntopo_500m for color, set icon size for points - sphere, 5000.<br>
 Display the result and save the image for the report.
 
 <pre><code>v.info -c precip_30ynormals_3d
-v.vol.rst precip_30ynormals_3d cross_input=elev_state_500m cross_output=precip_anntopo_500m maskmap=elev_state_500m wcolumn=annual zscale=90 segmax=700
+v.vol.rst input=precip_30ynormals_3d cross_input=elev_state_500m cross_output=precip_anntopo_500m maskmap=elev_state_500m wcolumn=annual zscale=90 segmax=700
 r.colors precip_anntopo_500m raster=precip_annual_500m
 d.rast precip_anntopo_500m
 </code></pre>
@@ -268,7 +269,7 @@ nviz elev_state_500m co=precip_anntopo_500m points=precip_30ynormals_3d
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

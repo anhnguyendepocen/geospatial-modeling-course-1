@@ -38,7 +38,7 @@
 <h2>Viewshed and solar energy potential analysis</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass70/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li><a href="http://www.grassbook.org/"> GRASSbook</a></li>
 </ul>
@@ -56,7 +56,7 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_viewshed_solar) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass70
+<pre><code>grass72
 </code></pre>
 
 <p>
@@ -120,8 +120,8 @@ d.out.file RHview
 <p>
 Use mapalgebra to compute landuse in the view,
 assign the visible land use map land use colors and category labels
-using <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.colors.html">r.colors</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.category.html">r.category</a></em> (see previous example)
-and use <em class="module"><a href="https://grass.osgeo.org/grass70/manuals/r.report.html">r.report</a></em> -n to <span class="question">compare the size and land use composition within
+using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.colors.html">r.colors</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.category.html">r.category</a></em> (see previous example)
+and use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.report.html">r.report</a></em> -n to <span class="question">compare the size and land use composition within
 viewshed from the RBC tower and RH headquarters</span>.
 
 <h3>Solar radiation analysis</h3>
@@ -138,14 +138,14 @@ d.rast elevfacility_1m
 <p>
 Prepare input maps (slope and aspect):
 
-<pre><code>r.slope.aspect elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m
+<pre><code>r.slope.aspect elevation=elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m
 </code></pre>
 
 <h4>Incidence angles and cast shadows</h4>
 <p>
 Compute the sun position on Dec. 22 at 2:25pm, EST (no map output expected):
 
-<pre><code>r.sunmask -s elevfacility_1m year=2001 month=12 day=22 hour=14 minute=25 sec=0 timezone=-5
+<pre><code>r.sunmask -s elevation=elevfacility_1m year=2001 month=12 day=22 hour=14 minute=25 sec=0 timezone=-5
 </code></pre>
 
 <p>
@@ -154,7 +154,7 @@ We assign histogram equalized color table - <span class="question">can you expla
 (hint: try the same color table without -e).<br>
 <span class="question">What is the value on the roof? How is it related to day/time?</span>
 
-<pre><code>r.sun elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m incidout=incid_elevfac_1m day=356 time=14.416667
+<pre><code>r.sun elevation=elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m incidout=incid_elevfac_1m day=356 time=14.416667
 r.info incid_elevfac_1m
 r.colors -e incid_elevfac_1m co=bcyr
 d.rast incid_elevfac_1m
@@ -170,7 +170,7 @@ compute and extract shadow area for 7.5 hr:
 r.colors shadow_1m color=grey
 d.rast elevfacility_1m
 d.rast shadow_1m
-r.sun elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m incidout=incid_elevfac7_1m day=356 time=7.50
+r.sun elevation=elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m incidout=incid_elevfac7_1m day=356 time=7.50
 r.mapcalc "shadow7_1m = if(isnull(incid_elevfac7_1m), 1, null())"
 d.rast shadow7_1m
 d.out.file shadows
@@ -182,9 +182,9 @@ Display the radiation maps and also insolation time maps insol_time using same c
 Optionally display the radiation maps draped over elevation elevfacility_1m in 3D view
 to see relation between terrain geometry and solar radiation.
 
-<pre><code>r.sun elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m day=356 glob_rad=g356 insol_time=its356
+<pre><code>r.sun elevation=elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m day=356 glob_rad=g356 insol_time=its356
 r.colors g356 co=gyr -e
-r.sun elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m day=172 glob_rad=g172 insol_time=its172
+r.sun elevation=elevfacility_1m aspect=aspect_elevfac_1m slope=slope_elevfac_1m day=172 glob_rad=g172 insol_time=its172
 r.colors g172 co=gyr -e
 d.rast g356
 d.legend g356 at=25,50,1,3
@@ -200,8 +200,8 @@ Calculate direct solar radiation and insolation time for a larger region.<br>
 Try to find good color tables (custom, hist. equalized, to see the pattern).
 
 <pre><code>g.region raster=elev_ned_30m -p
-r.slope.aspect elev_ned_30m aspect=asp_ned_30m slope=slp_ned_30m
-r.sun elev_ned_30m aspect=asp_ned_30m slope=slp_ned_30m linke_value=2.5 albedo_value=0.2 beam_rad=b356 diff_rad=d356 refl_rad=r356 insol_time=it356 day=356
+r.slope.aspect elevation=elev_ned_30m aspect=asp_ned_30m slope=slp_ned_30m
+r.sun elevation=elev_ned_30m aspect=asp_ned_30m slope=slp_ned_30m linke_value=2.5 albedo_value=0.2 beam_rad=b356 diff_rad=d356 refl_rad=r356 insol_time=it356 day=356
 </code></pre>
 <!-- d.erase -->
 Zoom to the new computational region and display the following layers:<br>
@@ -219,7 +219,7 @@ d.out.file insol_time
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

@@ -44,7 +44,7 @@
         Distance Education material is organized under
         <a href="schedule.html">Schedule</a>
     <li>
-        Grades are posted on <a href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle</a>
+        Grades are posted on <a href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle</a>
 <!-- , see the section that you have registered for
         <a href="http://courses.ncsu.edu/mea582/">MEA582</a>
         and <a href="http://courses.ncsu.edu/gis582/">GIS582</a> -->
@@ -71,7 +71,7 @@ on your computer after you graduate.
 
 <ul>
     <li>
-        Free and open source package GRASS GIS 7.0
+        Free and open source package GRASS GIS
         (<a href="http://grass.osgeo.org/">official website</a>)
     </li>
     <li>
@@ -99,14 +99,23 @@ on your computer after you graduate.
         </ul>
     </li>
     <li>
-        <b>Mac OS X 10.7+</b>:
+        <b>Mac OS 10.7+</b>:
         <ul>
             <li>
-                download and install
+                If you have 10.11+, then use <a href="http://brew.sh/">Homebrew</a>
+                tap from <a href="https://github.com/OSGeo/homebrew-osgeo4mac">OSGeo</a>.
+                In terminal, execute:
+                <pre>brew tap osgeo/osgeo4mac
+brew install grass7</pre>
+            </li>
+            <li>
+                If you have older system or have SIP disabled,
+                you can download and install
                 <a href="http://grassmac.wikidot.com/frameworks">required frameworks</a> and
-                <a href="http://grassmac.wikidot.com/downloads">GRASS GIS 7.0</a>
-                (start with the frameworks and then install GRASS GIS). If you have 10.11+
-                and have SIP enabled then use <a href="https://github.com/OSGeo/homebrew-osgeo4mac">homebrew</a>.
+                <a href="http://grassmac.wikidot.com/downloads">GRASS GIS</a>
+                (start with the frameworks and then install GRASS GIS).
+                The latest GRASS GIS 7.2 release is not available yet
+                in this way, so use 7.0 instead.
             </li>
         </ul>
     </li>
@@ -114,22 +123,30 @@ on your computer after you graduate.
         <b>Linux</b>:
         <ul>
             <li>
-                <a href="http://grass.osgeo.org/download/software/linux/">GRASS 7.0 packages</a>
+                <a href="http://grass.osgeo.org/download/software/linux/">GRASS GIS packages</a>
                 are available in software repositories
             </li>
         </ul>
+    </li>
+    <li>
+        For NCSU students, GRASS GIS is available in
+        <a href="https://vcl.ncsu.edu/">NCSU VCL</a>
+        OSGeo Live and ArcGIS Desktop environments (both contain also QGIS).
+        GRASS GIS is also available online in
+        <a href="https://www.rollapp.com/app/grassgis">rollApp</a>
+        with Premium account (QGIS also available).
     </li>
     <li>
         use available resources to learn about GRASS GIS
         <ul>
             <li>
                 use
-                <a href="http://grass.osgeo.org/grass70/manuals/wxGUI.html">wxGUI help page</a>
+                <a href="http://grass.osgeo.org/grass72/manuals/wxGUI.html">GUI help page</a>
                 to learn how to work with the software using graphical user interface (GUI)
             </li>
             <li>
                 use
-                <a href="http://grass.osgeo.org/grass70/manuals/full_index.html">modules' manual pages</a>
+                <a href="http://grass.osgeo.org/grass72/manuals/full_index.html">modules' manual pages</a>
                 to understand modules and their options
             </li>
             <li>
@@ -161,10 +178,16 @@ on your computer after you graduate.
 
 <ul>
     <li>
-        Proprietary package ArcGIS version 10.2 (or higher):
+        Proprietary package ArcGIS version 10.2 or higher:
         <ul>
-            <li><a href="http://software.ncsu.edu/vendor/esri/package/arcgis-desktop">NCSU Software Licensing Management page</a></li>
-            <li><a href="https://vcl.ncsu.edu/">NCSU VCL</a></li>
+            <li>
+                <a href="https://software.ncsu.edu">
+                NCSU Software Licensing Management page</a>
+                (NCSU students only, read the licensing conditions)
+            <li>
+                <a href="https://vcl.ncsu.edu/">NCSU VCL</a>,
+                ArcGIS Desktop
+                (contains also QGIS and GRASS GIS, NCSU students only)
         </ul>
     <li>
         use <a href="http://www.lib.ncsu.edu/gis/virtcamp.html">ESRI virtual campus,</a> available at NCSU,
@@ -267,16 +290,22 @@ based on the lectures, manual pages and other on-line resources.
     </li>
     <li>
         Sample paper formatting for
-        <a href="resources/word_report_template.docx">MS Word</a> and
+        <a href="resources/word_report_template.docx">MS Word (DOCX)</a>,
+        <a href="resources/libreoffice_report_template.odt">LibreOffice (ODT)</a>
+        (view online in <a href="https://www.rollapp.com/rollmyfile/10oKEs1bF6GLWfXbVAULDCmv8E4rw9TPbrzLY9Fp">rollApp</a>), and
         <a href="resources/latex_report_template.tex">LaTeX</a>
-        (open in <a href="https://www.overleaf.com/docs?snip_uri=http://courses.ncsu.edu/gis582/common/resources/latex_report_template.tex&splash=none">Overleaf</a>).
-        <!--<a href="MEA582_HWformat2014.odt">OpenOffice</a>, <a href="sample_report.pdf">pdf</a>,-->
+        (open online in <a href="https://www.overleaf.com/docs?snip_uri[]=http://ncsu-geoforall-lab.github.io/geospatial-modeling-course/resources/latex_report_template.tex&snip_uri[]=http://ncsu-geoforall-lab.github.io/geospatial-modeling-course/resources/report_template_image.png&rich_text=true">Overleaf</a>).
+        <!--<a href="sample_report.pdf">pdf</a>,-->
         Do not use the text from this example, it is for formatting only!
-                          Note that the submitted report should be in PDF, use naming convention <code>LastnameFirstname_HW#.pdf</code>.</li>
-                          <li>You can find some helpful hints from past semesters in
-                            <a href="faq.html"><b>Comments/answers to HW questions</b></a>.</li>
-                            <li>Upload your assignment papers on Moodle site
-                              according to the instructions below.
+    <li>
+        Note that the submitted report should be in PDF, use naming convention
+        <code>LastnameFirstname_HW#.pdf</code>.
+    <li>
+        You can find some helpful hints from past semesters in
+        <a href="faq.html"><b>Comments/answers to HW questions</b></a>.
+    <li>
+        Upload your assignment papers on Moodle site
+        according to the instructions below.
     <li>
         Although the HW papers are short they should be in a writing style suitable
         for scientific publications. You can learn more about scientific publishing in
@@ -284,9 +313,10 @@ based on the lectures, manual pages and other on-line resources.
         Please also read the first 10 pages on
         <a href="http://courses.ncsu.edu/mea592/common/media/01/Understanding-the-Publishing-Process.pdf">Publishing process</a>
         which explains a structure of a scientific paper.
-    </li>
-    <li>For additional suggestions, please read detailed <a href="report_guide.html">Report guide</a>
-        created specifically for this class.</li>
+    <li>
+        For additional suggestions, please read detailed
+        <a href="report_guide.html">Report guide</a>
+        created specifically for this class.
 </ul>
 
 <h3>Moodle</h3>
@@ -295,7 +325,7 @@ To manage your HW reports and project material we will use Moodle.
 Upload your HW report as PDF file
 <code>LastnameFirstname_HW#.pdf</code>
 (for example <code>SmithJohn_HW3.pdf</code>)
-    on Moodle site by 11pm on the due date.</em>
+on Moodle site by 11pm on the due date.
 
 <p>
 You will also use Moodle to post your project proposal, interim report, presentation and
@@ -342,7 +372,7 @@ for example, through the message board.
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=2299">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
