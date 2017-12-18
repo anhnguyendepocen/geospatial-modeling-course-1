@@ -91,12 +91,15 @@ d.rast lakes_buff
 </code></pre>
 
 <p>
-List categories in land use map to identify cat numbers for developed areas.
-Then run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em>:
+List categories in land use map to identify category numbers for developed areas.
+Then run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em> to extract the developed areas within the buffers
+and use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.support.html">r.support</a></em> to assign the labels from the original buffer raster 
+to the new developed buffer raster map (needed for legend): 
 
 <pre><code>r.category landuse96_28m
 r.mapcalc "developed_lake = if(landuse96_28m==1 || landuse96_28m==2, lakes_buff, null())"
 r.support developed_lake raster=lakes_buff
+r.category developed_lake
 </code></pre>
 
 <p>
@@ -405,7 +408,7 @@ d.rast.leg probability3
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=1612">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
@@ -418,7 +421,7 @@ d.rast.leg probability3
 <li title="Copyright and license (not applicable to linked materials)">
     &copy; 2016
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU OSGeoREL</a>
+    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU GeoForAll Lab</a>
 </li>
 </ul>
 </nav>

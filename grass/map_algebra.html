@@ -396,8 +396,9 @@ Save an image for your report.
 <h4>Map subsets</h4>
 Use map algebra to create map subsets.<br>
 Change region to the airphoto tile 792 and resolution 10m.
-Since we will work in different are, it is a good idea to remove
-all previously used map layers from the <em>Layer Manager</em>.
+Since we will work in different area, it is a good idea to remove
+all previously used map layers from <em>Layers</em> in
+the <em>Layer Manager</em>.
 
 <pre><code>g.region raster=ortho_2001_t792_1m res=10 -ap
 <!-- d.erase -->
@@ -431,12 +432,17 @@ Remove mask:
 </code></pre>
 
 <h4>Zonal statistics</h4>
-Compute % area for each category in each zipcode.
-<span class="question">Which zipcode has the most high density development?</span>
 
-<pre><code>r.stats -pl zipcodes,landuse96_28m
+First, set the computational region:
+
+<pre><code>g.region raster=urban2_30m
 </code></pre>
 
+Then, compute % area for each category in each zipcode.
+<span class="question">Which zipcode has the most high density development?</span>
+
+<pre><code>r.stats -pl zipcodes,urban2_30m
+</code></pre>
 
 <!-- p. 113<br> -->
 <h4>Working with relative coordinates</h4>
@@ -470,7 +476,7 @@ d.rast elev_srtm30m_smooth
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1617.wolfware.ncsu.edu/course/view.php?id=4889">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=1612">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
@@ -483,7 +489,7 @@ d.rast elev_srtm30m_smooth
 <li title="Copyright and license (not applicable to linked materials)">
     &copy; 2016
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU OSGeoREL</a>
+    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU GeoForAll Lab</a>
 </li>
 </ul>
 </nav>
