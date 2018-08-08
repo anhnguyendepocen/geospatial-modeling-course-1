@@ -28,6 +28,7 @@
 <li><a href="../logistics.html">Course logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -37,28 +38,28 @@
 <!-- This is a generated file. Do not edit. -->
 <h2>Geomorphometry I: Terrain Modeling</h2>
 <p>
-Resources: <a href="http://grass.osgeo.org/grass72/manuals/index.html">
+Resources: <a href="http://grass.osgeo.org/grass74/manuals/index.html">
 GRASS GIS overview and manual</a>,
 <a href="http://liblas.org/"> libLAS tools for lidar data conversions</a>
 
 <p>
 Download the Raleigh 2013 lidar data as LAS file and orthophoto:
 <ul>
-<li><a href="http://courses.ncsu.edu/mea582/common/media/data/tile_0793_016_spm.las" download>LAS tile 0793_016 in NC State Plane Meters </a></li>
-<li><a href="http://courses.ncsu.edu/mea582/common/media/01/ortho_0793_016_ncspm.zip" download>Orthophoto geotif (mosaic at 1ft resolution)</a></li>
+<li><a href="http://fatra.cnr.ncsu.edu/geospatial-modeling-course/data/tile_0793_016_spm.las" download>LAS tile 0793_016 in NC State Plane Meters </a></li>
+<li><a href="http://fatra.cnr.ncsu.edu/geospatial-modeling-course/data/ortho_0793_016_ncspm.zip" download>Orthophoto geotif (mosaic at 1ft resolution)</a></li>
 </ul>
 
 <h3>Software support</h3>
 
 The GRASS GIS installation on your computer may not support
-<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.lidar.html">v.in.lidar</a></em>
+<em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.in.lidar.html">r.in.lidar</a></em> and <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.in.lidar.html">v.in.lidar</a></em>
 modules. You can try them, e.g. using
 
 <pre><code>r.in.lidar --help
 </code></pre>
 
-On Windows platform, please use the <a href="https://grass.osgeo.org/grass72/binary/mswindows/native/x86_64/WinGRASS-7.2.2-1-Setup-x86_64.exe">
-standalone version of GRASS GIS</a> (the one we recommend on <a href="../logistics.html">Course Logistics</a>).
+On Windows platform, please use the standalone version of GRASS GIS
+we recommend in <a href="../logistics.html">Course Logistics</a>.
 If the modules don't work for you, please use instead of this assignment the
 <a href="terrain_modeling_ascii.html">ASCII file based version</a>
 of the assignment.
@@ -66,7 +67,7 @@ of the assignment.
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 <p>
@@ -90,7 +91,7 @@ without the need to specify the full path to the file.
 
 <!-- p. 249<br> -->
 <h3>Analyze bare earth and multiple return lidar data properties by binning</h3>
-Import the points using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.lidar.html">v.in.lidar</a></em>.
+Import the points using <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.in.lidar.html">v.in.lidar</a></em>.
 We can specify which class and which return (first, middle, last) we want to import.<br>
 We can see the classification either in metadata distributed with the lidar data
 or it can be displayed with <a href="http://liblas.org/">lasinfo</a> tool (in case lasinfo command is not available, skip it.):
@@ -107,7 +108,7 @@ Note: if you have any problems with the files, review the instructions above or
 use v.in.lidar GUI dialog to browse to get the path to the files.
 <p>
 Set the region from the imported point file with resolution of 1 meter.
-Compute raster maps (with <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.lidar.html">r.in.lidar</a></em>) representing number of points per 1 m grid cell.<br>
+Compute raster maps (with <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.in.lidar.html">r.in.lidar</a></em>) representing number of points per 1 m grid cell.<br>
 Compare point densities for bare earth, first return.
 
 <pre><code>g.region vect=elev_lid793016_1r res=1 -p
@@ -331,7 +332,7 @@ nviz elev_lidrural_1m,elev_lidrurfirst_1m
 <ul>
 <li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
-<li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
+<li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
 <li><a href="http://oit.ncsu.edu/itaccess">Accessibility</a></li>
 <li>
@@ -342,7 +343,7 @@ nviz elev_lidrural_1m,elev_lidrurfirst_1m
 <li title="Copyright and license (not applicable to linked materials)">
     &copy; 2016
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU GeoForAll Lab</a>
+    <a href="https://geospatial.ncsu.edu/geoforall/">NCSU GeoForAll Lab</a>
 </li>
 </ul>
 </nav>

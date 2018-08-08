@@ -28,6 +28,7 @@
 <li><a href="../logistics.html">Course logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -38,7 +39,7 @@
 <h2>Geospatial Analysis II:  buffers, cost surfaces, least cost path</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass74/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="./grass_intro.html">tutorial</a>
@@ -62,7 +63,7 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_buffers_cost) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 Remove MASK in case it was left over
@@ -92,8 +93,8 @@ d.rast lakes_buff
 
 <p>
 List categories in land use map to identify category numbers for developed areas.
-Then run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em> to extract the developed areas within the buffers
-and use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.support.html">r.support</a></em> to assign the labels from the original buffer raster 
+Then run <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.mapcalc.html">r.mapcalc</a></em> to extract the developed areas within the buffers
+and use <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.support.html">r.support</a></em> to assign the labels from the original buffer raster 
 to the new developed buffer raster map (needed for legend): 
 
 <pre><code>r.category landuse96_28m
@@ -124,8 +125,8 @@ r.report -n developed_lake units=h
 Set region and create buffers along major roads.<br>
 Intersect developed areas from landuse map with road buffers.<br>
 Transfer the category labels and compute the affected area.<br>
-Run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.category.html">r.category</a></em> from GUI and browse to the txt file,
-or run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.category.html">r.category</a></em> command (assuming <a href="data/noise_cats.txt">noise_cats.txt</a>
+Run <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.category.html">r.category</a></em> from GUI and browse to the txt file,
+or run <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.category.html">r.category</a></em> command (assuming <a href="data/noise_cats.txt">noise_cats.txt</a>
 is in your working directory).
 
 <pre><code>g.region raster=landuse96_28m -p
@@ -147,7 +148,7 @@ d.legend -c noise at=5,25,2,5
 <h4>Find schools affected by high levels of noise</h4>
 Convert schools to raster using CORECAPACI attribute (school capacity).<br>
 Use map algebra to overlay with noise impact buffers and
-compute the number of students exposed to noise (see result of <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.univar.html">r.univar</a></em>).
+compute the number of students exposed to noise (see result of <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.univar.html">r.univar</a></em>).
 
 <pre><code>v.to.rast schools_wake output=schoolscap_10m use=attr attrcolumn=CORECAPACI type=point
 r.mapcalc "schools_noise = if(int(schoolscap_10m) &amp;&amp; roads_buffers == 2, int(schoolscap_10m), null())"
@@ -179,7 +180,7 @@ d.out.file myspeedmap
 
 <p>
 Import the accident point location from GeoJSON file <a href="data/fire_pt.json">fire_pt.json</a><br>
-Run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.in.ogr.html">v.in.ogr</a></em> from GUI, use file browser to provide full path to the file,
+Run <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.in.ogr.html">v.in.ogr</a></em> from GUI, use file browser to provide full path to the file,
 or run the command assuming the file is in your working directory.
 
 <pre><code>v.in.ogr input=fire_pt.json output=fire_pt
@@ -267,7 +268,7 @@ Display the results in GUI.<br>
 You already may have some of these maps in GUI layer tree,
 so just switch them on and off and re-order as needed:
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 d.rast streets_cost
 d.vect fire_pt color=red icon=basic/marker size=20
 d.rast route_20Westernb
@@ -287,7 +288,7 @@ r.describe route_52Hollyb
 
 <p>
 If you would like to display streets_cost surface in 3D as shown in the lecture,
-you need to multiply the surface by 1000 using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em> because the numbers
+you need to multiply the surface by 1000 using <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.mapcalc.html">r.mapcalc</a></em> because the numbers
 in hours are very low.<br>
 Then switch off all layers except for the streets_cost_1000
 and change display to 3D.
@@ -315,7 +316,7 @@ Add the streets to friction map - they are missed by the landuse map.
 
 <pre><code>r.mapcalc "friction2 = if(streets_speed > 6, 0.1, friction)"
 r.colors friction2 rules=friction_color.txt
-<!-- d.erase -->
+d.erase
 d.rast friction2
 d.legend friction2 at=5,50,2,5
 </code></pre>
@@ -341,7 +342,7 @@ given in the file <a href="data/lostperson.txt">lostperson.txt</a>.
 echo "635576,216485" | v.in.ascii out=lostperson separator=","-->
 Uncheck the friction map and display the results:
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 r.colors -e map=walkcost color=viridis
 d.rast lakes
 d.rast walkcost
@@ -368,7 +369,7 @@ Compute the distance map and cost surface to highways:
 r.cost input=area_one output=dist_toroad start_rast=roadsmajor
 r.mapcalc "dist_meters = dist_toroad * (ewres() + nsres())/2."
 r.mapcalc "dist_class = int(dist_meters/500)"
-<!-- d.erase -->
+d.erase
 d.rast dist_class
 d.vect roadsmajor
 d.out.file dist_roadsmaj
@@ -419,7 +420,7 @@ d.rast.leg probability3
 <ul>
 <li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
-<li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
+<li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
 <li><a href="http://oit.ncsu.edu/itaccess">Accessibility</a></li>
 <li>
@@ -430,7 +431,7 @@ d.rast.leg probability3
 <li title="Copyright and license (not applicable to linked materials)">
     &copy; 2016
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU GeoForAll Lab</a>
+    <a href="https://geospatial.ncsu.edu/geoforall/">NCSU GeoForAll Lab</a>
 </li>
 </ul>
 </nav>

@@ -28,6 +28,7 @@
 <li><a href="../logistics.html">Course logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -38,7 +39,7 @@
 <h2>Spatial interpolation and approximation II: splines</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass74/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="./grass_intro.html">tutorial</a>
@@ -56,7 +57,7 @@ Text files with color rules:
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 <p>
@@ -96,7 +97,7 @@ Save images for your report.
 <pre><code>r.colors asp_rstdef_1m color=aspect
 r.colors asp_rstt10_1m color=aspect
 r.colors asp_rstt160_1m color=aspect
-<!-- d.erase -->
+d.erase
 d.rast elev_rstdef_1m
 d.rast asp_rstdef_1m
 d.out.file asp_rst_t40
@@ -145,7 +146,7 @@ and drape the deviations maps as color.
 
 <pre><code>r.colors elev_rstsm10_devi rules=deviations_color.txt
 r.colors elev_rstdef_devi raster=elev_rstsm10_devi
-<!-- d.erase -->
+d.erase
 d.rast elev_rstdef_devi
 d.rast elev_rstsm10_devi
 d.legend elev_rstsm10_devi at=2,50,2,6
@@ -169,7 +170,7 @@ and drape the crossvalidation map "elev_rstdef_cv" as color.
 
 <pre><code>v.surf.rst input=elev_rstdef_cv elevation=elev_rstdef_cv zcolumn=flt1
 r.colors elev_rstdef_cv raster=elev_rstsm10_devi
-<!-- d.erase -->
+d.erase
 d.rast elev_rstdef_cv
 d.vect elev_rstdef_cv size=2
 d.legend elev_rstdef_cv at=2,50,2,6
@@ -201,7 +202,7 @@ d.vect elev_lid792_cont1m col=yellow
 
 <h3>Interpolate precipitation with influence of topography</h3>
 
-Set the 3D region (read the man page for <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/g.region.html">g.region</a></em>).<br>
+Set the 3D region (read the man page for <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/g.region.html">g.region</a></em>).<br>
 We set <em>tbres</em> to high value - we have just a single level
 because we are not computing the 3D raster (see lecture for more details).
 
@@ -225,7 +226,7 @@ Use the downloaded the color table <a href="data/precip_color.txt">precip_color.
 Zoom to computational region when displaying the result.
 
 <pre><code>r.colors precip_annual_500m rules=precip_color.txt
-<!-- d.erase -->
+d.erase
 d.rast precip_annual_500m
 d.legend precip_annual_500m at=2,30,2,5 range=970,2400
 </code></pre>
@@ -271,7 +272,7 @@ nviz elev_state_500m co=precip_anntopo_500m points=precip_30ynormals_3d
 <ul>
 <li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
-<li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
+<li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
 <li><a href="http://oit.ncsu.edu/itaccess">Accessibility</a></li>
 <li>
@@ -282,7 +283,7 @@ nviz elev_state_500m co=precip_anntopo_500m points=precip_30ynormals_3d
 <li title="Copyright and license (not applicable to linked materials)">
     &copy; 2016
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU GeoForAll Lab</a>
+    <a href="https://geospatial.ncsu.edu/geoforall/">NCSU GeoForAll Lab</a>
 </li>
 </ul>
 </nav>
