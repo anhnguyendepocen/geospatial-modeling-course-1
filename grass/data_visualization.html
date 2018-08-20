@@ -28,6 +28,7 @@
 <li><a href="../logistics.html">Course logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -38,7 +39,7 @@
 <h2>Data display and visualization</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass74/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="./grass_intro.html">tutorial</a>
@@ -59,7 +60,7 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_data_visualization) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 
@@ -99,7 +100,7 @@ because we will be working with a smaller, high resolution region.
 <p>
 Start GRASS7 with your previous MAPSET.
 First set region to "rural_1m", then interpolate surface with vegetation
-from multiple return lidar points using the module <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.surf.rst.html">v.surf.rst</a></em>
+from multiple return lidar points using the module <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.surf.rst.html">v.surf.rst</a></em>
 (we will explain interpolation later on).
 
 <pre><code>g.region rural_1m -p
@@ -135,7 +136,7 @@ You may want to remove all previously used layers from the <em>Layer Manager</em
 before you start visualizing the new ones.
 
 <pre><code>g.region raster=landuse96_28m -p
-<!-- d.erase -->
+d.erase
 d.rast elevation_shade
 d.rast landuse96_28m values=1,2
 d.out.file landuse_elev
@@ -152,7 +153,7 @@ d.rast geology_30m
 d.rast elevation val=50-80,120-160 -o
 -->
 <h4>Change colors for raster maps</h4>
-There are many ways how to do it see <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.colors.html">r.colors</a></em> manual).
+There are many ways how to do it see <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.colors.html">r.colors</a></em> manual).
 <p>
 First create your own copy of the elevation map (see the command below).<br>
 Display it by Add raster > "myelev".
@@ -208,7 +209,7 @@ by e.g. /Users/john/mycolor.txt on Mac OS X):
 <p>
 Note that you can combine color RGB and name definitions
 as well as % and cat/val to create complex custom color tables
-and store them in a text file for future use, see the examples in <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.colors.html">r.colors</a></em> man page.
+and store them in a text file for future use, see the examples in <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.colors.html">r.colors</a></em> man page.
 
 <h4>Compare the use of equal interval and histogram equalized color table for slope</h4>
 
@@ -288,7 +289,7 @@ or use the following command:
 </code></pre>
 
 You may need to use right click in <em>Layers</em> to zoom to the extent
-of the whole vector map. Then use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.out.ogr.html">v.out.ogr</a></em> to
+of the whole vector map. Then use <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.out.ogr.html">v.out.ogr</a></em> to
 export the vector map in the KML format.
 If your are running the command in GUI do not forget to click point for
 data type. To view the data in Google Earth just drag and drop the KML
@@ -402,7 +403,7 @@ d.rast basins_shaded_10m
 <ul>
 <li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
-<li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
+<li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
 <li><a href="http://oit.ncsu.edu/itaccess">Accessibility</a></li>
 <li>
@@ -413,7 +414,7 @@ d.rast basins_shaded_10m
 <li title="Copyright and license (not applicable to linked materials)">
     &copy; 2016
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU GeoForAll Lab</a>
+    <a href="https://geospatial.ncsu.edu/geoforall/">NCSU GeoForAll Lab</a>
 </li>
 </ul>
 </nav>

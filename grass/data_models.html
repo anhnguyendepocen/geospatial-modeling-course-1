@@ -28,6 +28,7 @@
 <li><a href="../logistics.html">Course logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -39,7 +40,7 @@
 <!--Task: Resample raster data, convert between raster and vector data models-->
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass74/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="./grass_intro.html">tutorial</a>
@@ -49,7 +50,7 @@ how to use GUI from the first assignment</li>
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 <p>
@@ -77,7 +78,7 @@ with bilinear and bicubic method.
 <p>First, set the computation region extent to our study area
 and set resolution to 30 meters.
 The computational region (region for short) is set using
-<em class="module"><a href="https://grass.osgeo.org/grass72/manuals/g.region.html">g.region</a></em> module.
+<em class="module"><a href="https://grass.osgeo.org/grass74/manuals/g.region.html">g.region</a></em> module.
 Here for convenience we use named region which defines both the extent and the resolution.
 This named region is included in the data (location) we are using
 but it is possible to create new named regions and use them to bookmark different study areas.
@@ -86,7 +87,7 @@ but it is possible to create new named regions and use them to bookmark differen
 </code></pre>
 
 <p>
-The <code>-p</code> flag for <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/g.region.html">g.region</a></em> is used to print the region
+The <code>-p</code> flag for <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/g.region.html">g.region</a></em> is used to print the region
 we just set.
 
 <p>
@@ -98,7 +99,7 @@ Then we display the 30m resolution NED elevation raster.
 <p>
 To resample it to 10m resolution, first set the computational region to resolution 10m,
 then resample the raster using the nearest neighbor method.<br>
-Hint: To open the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.resamp.interp.html">r.resamp.interp</a></em> in GUI, type or paste the module name
+Hint: To open the <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.resamp.interp.html">r.resamp.interp</a></em> in GUI, type or paste the module name
 into the <em>Console</em> tab, then <em>Enter</em> to open the GUI dialog,
 don't forget to set the method to nearest under <em>Optional</em> tab.
 
@@ -199,7 +200,7 @@ d.rast elev_new100m_avg
 Before the next computation, remove all map layers from the <em>Layer Manager</em>
 because we don't need to see them anymore.
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 r.resamp.stats landuse96_28m out=landuse96_100m method=mode
 d.rast landuse96_100m
 </code></pre>
@@ -300,7 +301,7 @@ and type in speed limits 25,35,45,55,65; move legend with mouse as needed.
 <p>
 Alternatively, use the following commands:
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 d.rast streets_speed_30m 
 d.legend streets_speed_30m at=5,30,2,5 use=25,35,45,55,65 
 </code></pre>
@@ -330,11 +331,11 @@ Convert raster lines to vector lines.
 First, set the region and remove map layers from <em>Layer Manager</em>.
 Then do the conversion.
 <p>
-<span class="question">Explain why we are using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.thin.html">r.thin</a></em> module</span>.
+<span class="question">Explain why we are using <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.thin.html">r.thin</a></em> module</span>.
 You may want to remove all previously used layers from the <em>Layer Manager</em>
 before you start these new computations.
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 g.region raster=streams_derived -p
 d.rast streams_derived
 r.thin streams_derived output=streams_derived_t
@@ -364,7 +365,7 @@ You may want to remove all previously used layers from the <em>Layer Manager</em
 before you start these new computations.
 
 <pre><code>g.region raster=basin_50K -p
-<!-- d.erase -->
+d.erase
 d.rast basin_50K
 r.to.vect -sv basin_50K output=basin_50Kval type=area
 d.vect -c basin_50Kval
@@ -386,7 +387,7 @@ you are working in the command line.
 <ul>
 <li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
-<li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
+<li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
 <li><a href="http://oit.ncsu.edu/itaccess">Accessibility</a></li>
 <li>
@@ -397,7 +398,7 @@ you are working in the command line.
 <li title="Copyright and license (not applicable to linked materials)">
     &copy; 2016
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU GeoForAll Lab</a>
+    <a href="https://geospatial.ncsu.edu/geoforall/">NCSU GeoForAll Lab</a>
 </li>
 </ul>
 </nav>

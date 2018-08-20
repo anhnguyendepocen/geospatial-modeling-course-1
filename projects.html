@@ -28,6 +28,7 @@
 <li><a href="logistics.html">Course logistics</a></li>
 <li><a href="topics/index.html">Topics</a></li>
 <li><a href="projects.html">Projects</a></li>
+<li><a href="faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -118,7 +119,7 @@ bellow are some ideas you can use.
             (for example, extend the wiki page
             <a href="https://grasswiki.osgeo.org/wiki/Performance_comparison_GRASS_vs._ArcGIS">Performance comparison GRASS vs. ArcGIS</a>)
         <li>compare standard raster analysis and analysis using hexagonal grid
-            (created by <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.mkgrid.html">v.mkgrid</a></em>)
+            (created by <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.mkgrid.html">v.mkgrid</a></em>)
     </ul>
 <li><b>Reproduce a scientific paper</b>
     <ul>
@@ -133,17 +134,17 @@ bellow are some ideas you can use.
             (see, for example a
             <a href="http://www4.ncsu.edu/~jlloyd/Lloydj_MEA582f11/Lloyd_ProjectPaper_mea582f11.pdf">report on testing and enhancing v.transect addon</a>), suggestions:
             <ul>
-                <li><em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.kernel.html">v.kernel</a></em>
+                <li><em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.kernel.html">v.kernel</a></em>
                     wrapper with detection hotspots which are 10% of areas/values, e.g. using histogram,
                     and with other convenient features
                 <li><em>r3.patch</em> (similar to
-                    <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.patch.html">r.patch</a></em>)
+                    <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.patch.html">r.patch</a></em>)
                     can be implemented using Python and
-                    <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.mapcalc.html">r.mapcalc</a></em>
+                    <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.mapcalc.html">r.mapcalc</a></em>
                     or, by an advanced programmer, in C
                 <li>find an interesting scientific article
                     and implement GRASS GIS module based on that article (see e.g.
-                    <a href="http://grass.osgeo.org/grass72/manuals/addons/r.local.relief.html">r.local.relief</a> and its references)
+                    <a href="http://grass.osgeo.org/grass74/manuals/addons/r.local.relief.html">r.local.relief</a> and its references)
                 <li>read <a href="https://github.com/wenzeslaus/python-grass-addon">How to write a Python GRASS GIS 7 addon</a>
                 <li>update
                     <a href="https://grass.osgeo.org/grass64/manuals/addons/r.wind.sun.py.html">r.wind.sun</a>
@@ -166,8 +167,8 @@ bellow are some ideas you can use.
         <li>improvements in existing GRASS GIS functionality
             <ul>
                 <li>unify color tables for slope, aspect and curvatures
-                    used in <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.slope.aspect.html">r.slope.aspect</a></em>,
-                    <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.surf.rst.html">v.surf.rst</a></em>, <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.param.scale.html">r.param.scale</a></em>
+                    used in <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.slope.aspect.html">r.slope.aspect</a></em>,
+                    <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.surf.rst.html">v.surf.rst</a></em>, <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.param.scale.html">r.param.scale</a></em>
                     and other related modules
             </ul>
         <li>development of a web or mobile application, for example with GRASS GIS as a backend
@@ -183,7 +184,7 @@ bellow are some ideas you can use.
             (see, for example a
             <a href="resources/WendelS_Project_GIS582601s15.pdf">report on creating a test suite for r.watershed</a>)
         <li>testing of
-            <a href="https://grass.osgeo.org/grass72/manuals/addons/r.futures.html">r.futures</a>,
+            <a href="https://grass.osgeo.org/grass74/manuals/addons/r.futures.html">r.futures</a>,
             a module implementing urban growth model which is being
             developed at NCSU
     </ul>
@@ -193,24 +194,24 @@ bellow are some ideas you can use.
             to be included in the official documentation
             <ul>
                 <li>extend documentation for
-                    <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/v.kernel.html">v.kernel</a></em>,
+                    <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.kernel.html">v.kernel</a></em>,
                     add explanations of different kernels and constants
                 <li>add examples and descriptions to
-                    <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.topmodel.html">r.topmodel</a></em>
+                    <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.topmodel.html">r.topmodel</a></em>
                     documentation
                 <li>add examples and applications to
-                    <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.topidx.html">r.topidx</a></em>
+                    <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.topidx.html">r.topidx</a></em>
                     documentation
                 <li>add examples and images to
-                    <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.sun.html">r.sun</a></em>
-                    and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.sunmask.html">r.sunmask</a></em>
+                    <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.sun.html">r.sun</a></em>
+                    and <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.sunmask.html">r.sunmask</a></em>
                     documentation and extend
-                    <a href="http://grass.osgeo.org/grass72/manuals/addons/r.sun.hourly.html">r.sun.hourly</a>
+                    <a href="http://grass.osgeo.org/grass74/manuals/addons/r.sun.hourly.html">r.sun.hourly</a>
                     and
-                    <a href="http://grass.osgeo.org/grass72/manuals/addons/r.sun.daily.html">r.sun.daily</a>
+                    <a href="http://grass.osgeo.org/grass74/manuals/addons/r.sun.daily.html">r.sun.daily</a>
                     documentation
                 <li>create a tutorial or an overview of
-                <a href="http://grass.osgeo.org/grass72/manuals/keywords.html#statistics">GRASS GIS statistical modules</a>
+                <a href="http://grass.osgeo.org/grass74/manuals/keywords.html#statistics">GRASS GIS statistical modules</a>
                 for raster
                 <li>update and rewrite the
                     <a href="http://grass.osgeo.org/uploads/grass/history_docs/mapcalc-algebra.pdf">original r.mapcalc tutorial</a>
@@ -218,9 +219,9 @@ bellow are some ideas you can use.
                     <a href="http://daringfireball.net/projects/markdown/">Markdown</a>, or
                     <a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">reStructredText</a>
                 <li>browse
-                    <a href="http://grass.osgeo.org/grass72/manuals/full_index.html">GRASS GIS manual</a>
+                    <a href="http://grass.osgeo.org/grass74/manuals/full_index.html">GRASS GIS manual</a>
                     and
-                    <a href="http://grass.osgeo.org/grass72/manuals/addons/">GRASS GIS Addons manuals</a>
+                    <a href="http://grass.osgeo.org/grass74/manuals/addons/">GRASS GIS Addons manuals</a>
                     and find a module related to this class with insufficient
                     documentation according to your judgment
             </ul>
@@ -229,7 +230,7 @@ bellow are some ideas you can use.
             <a href="http://docs.qgis.org/2.8/en/docs/user_manual/processing/">QGIS Processing</a>
             with SAGA and GRASS GIS algorithms
         <li>rewrite the assignments for this class using
-            <a href="http://grass.osgeo.org/grass72/manuals/libpython/script_intro.html">GRASS GIS Python API</a>,
+            <a href="http://grass.osgeo.org/grass74/manuals/libpython/script_intro.html">GRASS GIS Python API</a>,
             <a href="http://docs.qgis.org/2.8/en/docs/user_manual/processing/scripts.html">QGIS Processing Python API</a>
             or <a href="https://www.r-project.org/">R</a>
             with <a href="https://cran.r-project.org/web/packages/rgrass7/rgrass7.pdf">rgrass7</a> package
@@ -377,7 +378,7 @@ Further notes:
 <ul>
 <li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
-<li><a href="http://geospatial.ncsu.edu/">GIST Home</a></li>
+<li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
 <li><a href="http://oit.ncsu.edu/itaccess">Accessibility</a></li>
 <li>
@@ -388,7 +389,7 @@ Further notes:
 <li title="Copyright and license (not applicable to linked materials)">
     &copy; 2016
     <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-    <a href="http://geospatial.ncsu.edu/osgeorel/">NCSU GeoForAll Lab</a>
+    <a href="https://geospatial.ncsu.edu/geoforall/">NCSU GeoForAll Lab</a>
 </li>
 </ul>
 </nav>
