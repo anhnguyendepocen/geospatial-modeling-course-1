@@ -332,26 +332,30 @@ processing server and spatial data publishing server
 </section>
 
 <section>
-<h3>GRASS GIS: History</h3>
+<h3>GRASS GIS</h3>
 <ul>
-<li>1983 started at US Army CERL
-    <span class="small">
-        as land management system
-    </span>
-<li>evolved into general purpose GIS
-<li>1999 GNU GPL, international team of developers
-<li>2008 OSGeo Project
-<li>35 years of GRASS GIS development in 2018
-<li>check out <a href="https://trac.osgeo.org/grass/timeline">last change</a>
-    <span class="small">(probably just few hours ago)</span>
-<li>last release Jun 12, 2018 <span class="small">[last checked Aug 2018]</span>
+    <li>
+        Timeline:
+        <ul>
+        <li>1983 started at US Army CERL
+            <span class="small">
+                as land management system
+            </span>
+        <li>evolved into general purpose GIS
+        <li>1999 GNU GPL, international team of developers
+        <li>2008 OSGeo Project
+        <li>35 years of GRASS GIS development in 2018
+        <li>check out <a href="https://trac.osgeo.org/grass/timeline">last change</a>
+            <span class="small">(probably just few hours ago)</span>
+        <li>last release Jun 12, 2018 <span class="small">[last checked Aug 2018]</span>
+        </ul>
 </ul>
 <img src="img/grass_logo_development.png" class="stretch">
 </section>
 
 
 <section>
-<h3>GRASS GIS: Historical Video</h3>
+<h3>Historical Video</h3>
 <p class="small">
     Historical promotional video from 1987 narrated by William Shatner
 </p>
@@ -366,59 +370,65 @@ processing server and spatial data publishing server
 
 
 <section>
-<h3>GRASS GIS: Research</h3>
-<ul>
-<li>Solar radiation model (r.sun)
-    <ul>
-        <li>available since 1993
-        <li>major changes in 1996, 1999, 2002, 2003, 2006, 2008, 2017
-        <li>parallelized version in 7.4
-    </ul>
-<li>by Jaroslav Hofierka et al.
-</ul>
-<br>
-<img src="img/summer_solstice_centennial.gif" class="stretch">
-<p><small>
-summer solstice dynamics on lidar DEM (Centennial Campus)
-</small></p>
+<h3>Processing Capabilities Overview</h3>
+    <dl style="font-size: 70%;">
+        <dt>raster and 3D raster</dt>
+        <dd>
+            map algebra, DEM, interpolation, flow, neighborhood, solar, cost surfaces, ...
+        </dd>
+        <dt>imagery (remote sensing)</dt>
+        <dd>
+            rectification, multispectral, classification, segmentation, PCA, FFT, ...
+        </dd>
+        <dt>vector and database</dt>
+        <dd>
+            buffers, overlays, networks, topology, attribute management, SQL, ...
+        </dd>
+        <dt>spatio-temporal data (time series)</dt>
+        <dd>
+            sampling, statistics, aggregation, temporal topology, algebra, ...
+        </dd>
+    </dl>
+<img src="img/grass_modeler_skyview.png" class="stretch">
 </section>
 
 
 <section>
-<h3>GRASS GIS: Interfaces</h3>
-<ul>
-<li>Functionality divided into modules <span class="small">(over 500)</span>
-<li>Modules can be accessed using:
-    <ul>
-        <li>Graphical User Interface (GUI)
-        <li>Command Line Interface (CLI)
-        <li>Python
-    </ul>
-</ul>
-<br>
-<img src="img/grass_count_and_modules.png" class="stretch">
+<h3>General Capabilities Overview</h3>
+    <dl style="font-size: 70%;">
+        <dt>visualization</dt>
+        <dd>
+            2D display, 3D visualization, temporal visualization, PNG, PS and PDF maps, ...
+        </dd>
+        <dt>interoperability</dt>
+        <dd>
+            import from and export to different formats, WMS, ...
+        </dd>
+        <dt>extensibility</dt>
+        <dd>
+            scriptable (e.g. Python), custom tools (typically Python or C), ...
+        </dd>
+    </dl>
+<img src="img/drone_3d.png" class="stretch">
 </section>
 
 
 <section>
-<h3>GUI</h3>
+<h3>Software Description</h3>
 <ul>
-<li>The interface for desktop
+    <li>portable:
+        <ul>
+            <li>many operating systems: MS Windows, Mac OS, Linux, ...
+            <li>32bit and 64bit versions
+            <li>high-end desktops, low-end laptops,
+                Raspberry Pi,
+                High-Performance Computing clusters, ...
+        </ul>
+    <li>single integrated software
+    <li>functionality divided into modules
+    <li>written in C and Python
 </ul>
-<br>
-<img src="img/grass_gui.png" class="stretch">
-</section>
-
-
-<section>
-<h3>Command Line</h3>
-<ul>
-<li>The baseline interface for efficiency and reproducibility
-<li>Available in GUI as Console with autocomplete functions
-</ul>
-<pre>r.fill.dir input=elev output=fill direction=dir
-</pre>
-<img src="img/grass_cli.png" class="stretch">
+<img src="img/grass_hexagons_3d_white_outlier.png" class="stretch">
 </section>
 
 
@@ -475,6 +485,64 @@ summer solstice dynamics on lidar DEM (Centennial Campus)
 
 
 <section>
+<h3>Research Use</h3>
+<ul>
+<li>Used as a research platform and code repository
+<li>Example: Solar radiation model (r.sun)
+    <ul>
+        <li>available since 1993
+        <li>major changes in 1996, 1999, 2002, 2003, 2006, 2008, 2017
+        <li>parallelized version in 7.4
+    </ul>
+<li>by Jaroslav Hofierka et al.
+</ul>
+<br>
+<img src="img/summer_solstice_centennial.gif" class="stretch">
+<p><small>
+summer solstice dynamics on lidar DEM (Centennial Campus)
+</small></p>
+</section>
+
+
+<section>
+<h3>User Interfaces</h3>
+<ul>
+<li>Functionality divided into modules <span class="small">(over 500)</span>
+<li>Modules can be accessed using:
+    <ul>
+        <li>Graphical User Interface (GUI)
+        <li>Command Line Interface (CLI)
+        <li>Python
+    </ul>
+</ul>
+<br>
+<img src="img/grass_count_and_modules.png" class="stretch">
+</section>
+
+
+<section>
+<h3>GUI</h3>
+<ul>
+<li>The interface for desktop
+</ul>
+<br>
+<img src="img/grass_gui.png" class="stretch">
+</section>
+
+
+<section>
+<h3>Command Line</h3>
+<ul>
+<li>The baseline interface for efficiency and reproducibility
+<li>Available in GUI as Console with autocomplete functions
+</ul>
+<pre>r.fill.dir input=elev output=fill direction=dir
+</pre>
+<img src="img/grass_cli.png" class="stretch">
+</section>
+
+
+<section>
 <h3>Python</h3>
 <ul>
     <li>grass package part of GRASS GIS
@@ -513,6 +581,9 @@ gs.run_command('r.fill.dir', input='elev',
 </ul>
 <p>
 <iframe data-autoplay width="700" height="350" src="https://www.youtube.com/embed/Uje8ORyhBaQ?rel=0&amp;showinfo=0&amp;loop=1&amp;playlist=Uje8ORyhBaQ" frameborder="0" allowfullscreen></iframe>
+<p><small>
+Modules running: v.surf.rst, r.contour, r.fill.dir, r.sim.water
+</small></p>
 </section>
 
 
@@ -545,6 +616,16 @@ gs.run_command('r.fill.dir', input='elev',
 </ul>
 <br>
 <img src="img/grass_startup.png" class="stretch">
+</section>
+
+
+<section>
+<h3>Computational Region</h3>
+<ul>
+    <li>extent and resolution for raster computations
+</ul>
+<br>
+<img src="img/grass_computational_region.png" class="stretch">
 </section>
 
 
@@ -595,6 +676,20 @@ gs.run_command('r.fill.dir', input='elev',
         </ul>
 </ul>
 <img src="img/grass_bug_in_equation.png" class="stretch">
+</section>
+
+
+<section>
+<h3>Summary</h3>
+<ul>
+    <li>
+        <ul>
+            <li>
+            <li>
+        </ul>
+</ul>
+<br>
+<img src="img/grass_logo.png" class="stretch">
 </section>
 <!-- This is a generated file. Do not edit. -->
         </div>  <!-- slides -->
