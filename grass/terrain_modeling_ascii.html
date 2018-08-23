@@ -25,9 +25,11 @@
 <ul class="nav">
 <li><a href="../index.html">Syllabus</a></li>
 <li><a href="../schedule.html">Schedule</a></li>
-<li><a href="../logistics.html">Course logistics</a></li>
+<li><a href="../topics/course_intro.html">Introduction</a></li>
+<li><a href="../logistics.html">Logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -38,7 +40,7 @@
 <h2>Geomorphometry I: Terrain Modeling (data in ASCII files)</h2>
 
 <p>
-Resources: <a href="http://grass.osgeo.org/grass72/manuals/index.html">
+Resources: <a href="http://grass.osgeo.org/grass74/manuals/index.html">
 
 <p>
 Download the ASCI (x,y,z) lidar bare earth data
@@ -50,7 +52,7 @@ Download the ASCI (x,y,z) lidar multiple return data
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 <p>
@@ -80,7 +82,7 @@ First, download the ASCI (x,y,z) lidar data
 and then compute a raster map representing number of points
 per 2m and 6m grid cell to assess the point density.
 If you are unsure about the current working directory and where your
-text file with point is, run <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.xyz.html">r.in.xyz</a></em> from GUI
+text file with point is, run <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.in.xyz.html">r.in.xyz</a></em> from GUI
 to find the path to the external <tt>lid_be_pts.txt</tt>.
 Do not forget to zoom to computational region
 to check its extent and see the resulting data.
@@ -92,7 +94,7 @@ and below the raster map image.
 <pre><code>g.region rural_1m res=2 -p
 r.in.xyz input=lid_be_pts.txt output=lid_be_binn2m method=n
 r.in.xyz input=lid_mr_pts.txt output=lid_mr_binn2m method=n
-<!-- d.erase -->
+d.erase
 d.rast lid_mr_binn2m
 d.legend lid_mr_binn2m at=2,20,2,5
 d.out.file mylidmrn2m
@@ -118,13 +120,13 @@ d.out.file mylidben2m
 
 <p>
 Decrease resolution and try the above steps with
-the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.in.xyz.html">r.in.xyz</a></em> module again.
+the <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.in.xyz.html">r.in.xyz</a></em> module again.
 Again, run it from GUI, define full path, or manage your current
 working directory.
 
 <pre><code>g.region rural_1m res=6 -ap
 r.in.xyz input=lid_be_pts.txt out=lid_be_binn6m meth=n
-<!-- d.erase -->
+d.erase
 d.rast lid_be_binn6m
 d.legend lid_be_binn6m at=2,20,2,5
 d.out.file mylidben6m
@@ -152,7 +154,7 @@ Compute range:
 
 <pre><code>r.in.xyz input=lid_be_pts.txt out=lid_be_binrange6m meth=range
 r.in.xyz input=lid_mr_pts.txt out=lid_mr_binrange6m meth=range
-<!-- d.erase -->
+d.erase
 d.rast lid_be_binrange6m
 d.legend lid_be_binrange6m at=2,40,2,5
 d.rast lid_mr_binrange6m
@@ -185,10 +187,10 @@ to display only selected interval of values in GUI.
 Add raster > Required tab, select <tt>lid_be_binrange6m</tt>
 In Selection tab, set List of values to be displayed to <tt>0.5-20</tt>.
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 d.rast ortho_2001_t792_1m
 d.rast lid_be_binrange6m val=0.5-20.
-<!-- d.erase -->
+d.erase
 d.rast ortho_2001_t792_1m
 d.rast lid_mr_binrange6m val=0.5-20.
 </code></pre>
@@ -214,7 +216,7 @@ v.in.ascii -ztr input=lid_be_pts.txt out=elev_lid_bepts z=3
 <p>
 Display bare ground and multiple return points over orthophoto:
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 d.rast ortho_2001_t792_1m
 </code></pre>
 
@@ -249,7 +251,7 @@ and higher tension for multiple return data:
 v.extract elev_lidrural_mrpts out=elev_lidrur_first type=point where="Return=1"
 v.surf.rst input=elev_lid792_bepts elevation=elev_lidrural_1m npmin=120 segmax=25
 v.surf.rst input=elev_lidrur_first elevation=elev_lidrurfirst_1m npmin=120 segmax=25 tension=100 smooth=0.5
-<!-- d.erase -->
+d.erase
 d.rast elev_lidrural_1m
 d.rast elev_lidrurfirst_1m
 </code></pre>
@@ -272,7 +274,7 @@ If you don't remember this, see screen capture video for
 Find out where we have multiple returns:
 
 <pre><code>g.region rural_1m -p
-<!-- d.erase -->
+d.erase
 d.rast ortho_2001_t792_1m
 </code></pre>
 
@@ -319,7 +321,7 @@ d.vect elev_contour_3m
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1819.wolfware.ncsu.edu/course/view.php?id=575">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

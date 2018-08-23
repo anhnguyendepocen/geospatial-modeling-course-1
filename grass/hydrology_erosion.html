@@ -25,9 +25,11 @@
 <ul class="nav">
 <li><a href="../index.html">Syllabus</a></li>
 <li><a href="../schedule.html">Schedule</a></li>
-<li><a href="../logistics.html">Course logistics</a></li>
+<li><a href="../topics/course_intro.html">Introduction</a></li>
+<li><a href="../logistics.html">Logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -38,7 +40,7 @@
 <h2>Erosion modeling</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass74/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="./grass_intro.html">tutorial</a>
@@ -70,7 +72,7 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_erosion) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 <p>
@@ -126,7 +128,7 @@ r.colors lsfac3d_1m raster=lsfac3d_s1_1m
 </code></pre>
 
 Display layers and save outputs:
-<!-- d.erase -->
+d.erase
 <pre><code>d.rast lsfac3d_1m
 d.vect elev_lid792_cont1m
 d.legend lsfac3d_1m at=2,50,2,6
@@ -142,7 +144,7 @@ d.out.file lsfac_s10
 <h4>Compute soil detachment for spatially variable land cover</h4>
 
 Set region to rural area and recode landcover_1m to cfactor
-using the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.recode.html">r.recode</a></em> module.
+using the <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.recode.html">r.recode</a></em> module.
 Assign special color table and display result.<br>
 
 <pre><code>g.region rural_1m -p
@@ -157,7 +159,7 @@ Compute the USLE3D equation using map algebra,
 cfactorbare_1m is the same as cfactor_1m,
 cfactorgrow_1m has landuse recoded for summer conditions.<br>
 Specify units of the raster maps using
-the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.support.html">r.support</a></em> module.<br>
+the <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.support.html">r.support</a></em> module.<br>
 <span class="question">Compare erosion rates and distribution
 for winter (bare) and summer conditions.</span>
  
@@ -168,7 +170,7 @@ r.colors soillossgrow_1m raster=soillossbare_1m
 r.support map=soillossbare_1m units="ton/(acre.year)"
 r.support map=soillossgrow_1m units="ton/(acre.year)"
 </code></pre>
-<!-- d.erase -->
+d.erase
 Remove previous layers and display the new ones:
 <pre><code>d.rast soillossbare_1m
 d.legend soillossbare_1m at=2,50,2,6
@@ -224,7 +226,7 @@ Display elev_lid792_1m in 3D and drape over erdep as color (switch off all layer
 
 <h4>Compute summary statistics</h4>
 
-Use <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.recode.html">r.recode</a></em> to classify erosion/deposition and <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.category.html">r.category</a></em>
+Use <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.recode.html">r.recode</a></em> to classify erosion/deposition and <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.category.html">r.category</a></em>
 to add labels (stable, high erosion, etc) to individual categories:
 
 <pre><code>r.recode erdep output=erdep_class rules=erdep_class.txt
@@ -279,7 +281,7 @@ You can use the Python shell in the <em>Python</em> tab do the division.
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1819.wolfware.ncsu.edu/course/view.php?id=575">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

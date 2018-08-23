@@ -25,9 +25,11 @@
 <ul class="nav">
 <li><a href="../index.html">Syllabus</a></li>
 <li><a href="../schedule.html">Schedule</a></li>
-<li><a href="../logistics.html">Course logistics</a></li>
+<li><a href="../topics/course_intro.html">Introduction</a></li>
+<li><a href="../logistics.html">Logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -43,7 +45,7 @@ path sampling model.
 <p>
 Resources:
 <ul>
-    <li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
+    <li><a href="http://grass.osgeo.org/grass74/manuals/index.html">
 GRASS GIS overview and manual</a>
     <li><a href="http://www.grassbook.org/">GRASS book</a>
 </ul>
@@ -66,7 +68,7 @@ instructions for the
 <h3>Start GRASS GIS</h3>
 Start GRASS - click on GRASS icon or type<br>
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 <p>
@@ -92,12 +94,12 @@ Calculate partial derivatives to define the gradient of elevation surface:
 
 <pre><code>v.surf.rst -d input=elev_lid792_bepts elevation=elev_lid792_2m slope=dx_2m aspect=dy_2m tension=15 smooth=1.5 npmin=150
 </code></pre>
-Note that partial derivatives can be also computed using <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.slope.aspect.html">r.slope.aspect</a></em>.
+Note that partial derivatives can be also computed using <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.slope.aspect.html">r.slope.aspect</a></em>.
 
 <p>
 Compute spatial pattern of overland flow depth and discharge
 by running the SIMWE model implemented in
-the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.sim.water.html">r.sim.water</a></em> module.
+the <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.sim.water.html">r.sim.water</a></em> module.
 We will use uniform rainfall excess, infiltration and land cover.
 <pre><code>r.sim.water -t elevation=elev_lid792_2m dx=dx_2m dy=dy_2m rain_value=50 infil_value=0 man_value=0.05 depth=wdp_2m discharge=disch_2m nwalkers=100000 niterations=120 output_step=20
 </code></pre>
@@ -158,7 +160,7 @@ represented by spatially variable Mannings and rainfall excess.
 We will use variable Mannings coefficient defined by reclassifying
 land cover class. Here is the content of a file called
 <code>land_to_mannings.txt</code> with reclassification rules for
-the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.recode.html">r.recode</a></em> module.
+the <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.recode.html">r.recode</a></em> module.
 
 <pre data-filename="land_to_mannings.txt">
 1:1:0.9:0.9
@@ -195,7 +197,7 @@ rates based on the land cover classes. We use file named
 11:11:10:10
 </pre>
 
-Again, we use the file as rules for the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.recode.html">r.recode</a></em> module.
+Again, we use the file as rules for the <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.recode.html">r.recode</a></em> module.
 
 <pre><code>r.recode input=landcover_1m output=raincover_2m rules=land_to_rain.txt
 </code></pre>
@@ -222,7 +224,7 @@ Animate the time series using the Animation tool.
 
 Compute sediment flow rate and net erosion/deposition using sediment
 transport part of the SIMWE model implemented in the
-the <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.sim.sediment.html">r.sim.sediment</a></em> module.
+the <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.sim.sediment.html">r.sim.sediment</a></em> module.
 To make the computations faster, set region just to the upper part of
 the watershed:
 
@@ -271,7 +273,7 @@ d.legend erdepsimwe
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1819.wolfware.ncsu.edu/course/view.php?id=575">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>

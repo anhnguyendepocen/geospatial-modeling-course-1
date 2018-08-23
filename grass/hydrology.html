@@ -25,9 +25,11 @@
 <ul class="nav">
 <li><a href="../index.html">Syllabus</a></li>
 <li><a href="../schedule.html">Schedule</a></li>
-<li><a href="../logistics.html">Course logistics</a></li>
+<li><a href="../topics/course_intro.html">Introduction</a></li>
+<li><a href="../logistics.html">Logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
+<li><a href="../faq.html">FAQs</a></li>
 </ul>
 </nav>
 
@@ -38,7 +40,7 @@
 <h2>Flow routing and watershed analysis</h2>
 <p>Resources:
 <ul>
-<li><a href="http://grass.osgeo.org/grass72/manuals/index.html">
+<li><a href="http://grass.osgeo.org/grass74/manuals/index.html">
 GRASS GIS overview and manual</a></li>
 <li> <a href="data_acquisition.html#commands">Recommendations</a>
 and <a href="./grass_intro.html">tutorial</a>
@@ -58,7 +60,7 @@ For <b>Project location</b> select nc_spm_08_grass7 (North Carolina, State Plane
 for <b>Accessible mapset</b> create a new mapset (called e.g. HW_hydrology) and
 click <b>Start GRASS</b>.
 
-<pre><code>grass72
+<pre><code>grass74
 </code></pre>
 
 <p>
@@ -106,8 +108,8 @@ Generate shaded map and display:
 <span class="question">How can you modify the mapcalc expression to make stream origins fit better
 with the official stream map?</span>
 
-<!-- d.erase -->
-<pre><code>d.his hue=basin_10K intensity=elevation_shade brighten=40
+<pre><code>d.erase
+d.his hue=basin_10K intensity=elevation_shade brighten=40
 d.vect basin_10K type=boundary
 d.rast lakes
 d.vect streams_der_30m color=blue
@@ -118,7 +120,7 @@ d.out.file mystreams
 <h3>Create map of DEM depressions</h3>
 Depression filling is often necessary for certain flow routing algorithms but it can alter the elevation data significantly. 
 Find out how extensive the depressions are in our DEM.<br>
-Note that <em class="module"><a href="https://grass.osgeo.org/grass72/manuals/r.watershed.html">r.watershed</a></em> doesn't need any depression filling thanks to
+Note that <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/r.watershed.html">r.watershed</a></em> doesn't need any depression filling thanks to
 its underlying algorithm which uses least cost path to get over depressions.
 
 <pre><code>g.region raster=elevation -p
@@ -133,7 +135,7 @@ r.colors depr_bin color=blues
 Remove all previously used layers from the <em>Layer Manager</em> and
 display the new results, compare the derived depressions with actual lakes:
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 d.rast elevation
 d.vect roadsmajor
 d.rast depr_bin
@@ -152,7 +154,7 @@ r.watershed -as elevation=elev_lid792_1m threshold=5000 accumulation=accum_5K dr
 <p>
 Remove previous layers. Display extracted streams over aerial image:
 
-<pre><code><!-- d.erase -->
+<pre><code>d.erase
 d.rast ortho_2001_t792_1m
 d.rast accum_5K values=1000-1000000
 </code></pre>
@@ -217,8 +219,8 @@ Compare upslope and downslope flow lines:
 <p>
 Remove or switch off all previous layers.
 
-<!-- d.erase -->
-<pre><code>g.region raster=elev_lid792_1m -p
+<pre><code>d.erase
+g.region raster=elev_lid792_1m -p
 r.flow elevation=elev_lid792_1m flowline=flowlines flowlength=flowlg_1m flowaccumulation=flowacc_1m
 r.flow -u elevation=elev_lid792_1m flowlength=flowlgup_1m flowaccumulation=flowaccup_1m
 </code></pre>
@@ -324,7 +326,7 @@ d.rast tci_1m
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1819.wolfware.ncsu.edu/course/view.php?id=575">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
