@@ -173,7 +173,7 @@
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
 <section>
-    <h2><b>Geospatial data acquisition and integration</b></h2>
+    <h2><b>Geospatial data models</b></h2>
     <p style="margin-top: 0.5em">
         Helena Mitasova</p>
     <p class="title-foot">
@@ -183,318 +183,191 @@
 </section>
 
 <section>
-    <h3>Learning objectives</h3>
+    <h3>Outline: learning objectives</h3>
+<p>
 <ul>
-  <li class="fragment">Understand the diversity of geospatial data sources</li>
-  <li class="fragment">Classify modern mapping technologies</li>
-  <li class="fragment">Understand the concept of georeferenced data</li>
-  <li class="fragment">Explain differences between the basic coordinate reference systems (CRS)</li>
-  <li class="fragment">Use CRS standards to find parameters for a given CRS</li>
-  <li class="fragment">Understand concept of re-projection between CRSs</li> 
-<!--<li class="fragment"><strong>Use</strong> the proper terminology and <strong>understand</strong> its meaning</li>-->
+  <li>raster and vector data models
+  <li>data models transformations
+  <li>geospatial data formats
+  <li>data repositories, wms services, metadata
+  <li class="fragment">Identify and use on-line geospatial data repositories </li>
+  <li>open science: <br>
+      open data, open source software, open access
 </ul>
 </section>
 
 <section>
-   <h3>Geospatial data acquisition</h3>
-<p>Current revolution in mapping technologies: 
-<p>continuous data collection anywhere by anyone
-<p class=small>Have you ever collected geospatial data?
-<br> If yes - share with us where and how
-<br> DE students post answers on moodle forum 
+   <h3>Geospatial data models</h3>
+<p>
+Mapped, georeferenced data are transformed into discrete GIS representations using
+<ul>
+  <li>raster (regular grid) or,
+  <li>vector (feature: point, line, area/polygon) 
+  <li>specialized representations: hexagonal grid, meshes
+</ul>
+<p>geospatial data models img
 </section>
 
 <section>
-   <h3>Professional mapping technologies</h3>
+   <h3>Geospatial data models</h3>
+<p>
+Two different types of objects/phenomena
 <p>
 <ul>
- <li class="fragment">passive and active aerial and satellite sensors
- <li class="fragment">ground-based surveys : (RTK)GPS, total station, lidar
- <li class="fragment">in situ sensors: e.g., air quality, river stages, water quality, soil moisture
-</ul>
-<p class="fragment">
-Emergence of autonomous platforms: air, ground, water </p>
-<p class="fragment">
-<img height="200" src="img/data_acquisition/reiglminingsm.jpg">
-</section>
-
-<section>
-   <h3>Remote sensing: passive</h3>
-<p>Large number of satellite and airborne platforms and sensors, examples:  
-<ul>
- <li class="fragment">Landsat 1-7: landcover since 1972, 30m, multispectral 
- <li class="fragment">Terra: MODIS: temperature, 250m; ASTER: radiance, DEM, 15m  
- <li class="fragment"><a href="https://earth.esa.int/web/sentinel/user-guides/sentinel-2-msi">
-SENTINEL-2 MSI: landcover, 10m, multispectral</a>
- <li class="fragment">
-<a href="https://www.planet.com/company">PLANET:</a> new generation of small satellites: 170 small satellites mapping Earth daily at 3m resolution
-</ul>
-See <a href="https://earthdata.nasa.gov/user-resources/remote-sensors">overview of Remote Sensors by NASA</a>
-<p>
-</section>
-
-<section>
-   <h3>Remote sensing: active </h3>
-<p>Satellite and airborne platforms and sensors, examples:
-<ul>
- <li class="fragment"><a href="https://www2.jpl.nasa.gov/srtm/">
-Shuttle Radar Topography Mission (SRTM) 2001</a>: 30m resolution elevation for almost entire globe
- <li class="fragment">InSAR: high accuracy deformation mapping
- <li class="fragment">Lidar: airborne surveys - high resolution elevation data, including vegetation structure
-</ul>
-<p>
-See <a href="https://earthdata.nasa.gov/user-resources/remote-sensors">overview of Remote Sensors by NASA</a>
-<br><font class=credit>Images and data by NASA and NCSU MEAS</font>
-</section>
-
-<section>
-   <h3>Satellite Remote Sensing</h3>
-<p>SRTM and LANDSAT example for Panama:
-<p>
-<img width="25%" src="img/data_acquisition/srtmanim_small.gif">
-<img width="50%" src="img/data_acquisition/panamaSRTM90m.jpg">
-<br>
-<img width="25%" src="img/data_acquisition/LandsatETMengineer.jpg">
-<img width="50%" src="img/data_acquisition/PanamaPtsLandsat.jpg">
-</section>
-
-<section>
-   <h3>Satellite Remote Sensing</h3>
-<p>PLANET example for Jockey's Ridge change between September 2017 and July 18 mapped at 3m resolution:
-<p>
-<iframe width="560" height="315" scrolling="no" src="img/data_acquisition/sep17_july18.mp4" frameborder="0" allowfullscreen></iframe>
-<p>
-<font class=credit>Data by planet.com</font>
-</section>
-
-<section>
-   <h3>Airborne Remote Sensing</h3>
-<p>Lidar and orthophoto example for NCSU agricultural fields - sub-meter resolution mapping:
-<!--<p><img height="200" src="img/data_acquisition/airborne_lidar_mapping_schematic.jpg">-->
-<p><img width="60%" src="img/lidarmrpts3dcolored.jpg">
-<img width="25%" src="img/data_acquisition/SECREF2010_googlemap.jpg">
-<p>Most current systems combine active and passive sensors
-</section>
-
-<!--
-<section>
-   <h3>Airborne Remote Sensing</h3>
-<p>Small unmanned aerial system (sUAS) example for NCSU agricultural fields
-<p><img height="200" src="img/system.jpg">
-<p><img height="200" src="img/ortho.jpg">
-<p><img height="200" src="img/dsm.jpg">
-<p>Credits
-</section>
-
-<section>
-   <h3>Ground-based passive </h3>
-<p>360 deg cameras - static and mobile
-<p><img width="45%" src="img/data_acquisition/Jordanhall_orthophoto.jpg">
-<p><img width="45%" src="img/data_acquisition/ortho.jpg">
-</section>
--->
-
-<section>
-   <h3>Ground and water</h3>
-<p>RTK GPS, sonar
-<p><img width="70%" src="img/data_acquisition/GeodynRTKGPS1sm.jpg">
-</section>
-
-<section>
-   <h3>Non-traditional data sources</h3>
-<p>Widespread GPS enabled technology: continuous data collection
-<p>
-<ul>
- <li class="fragment">smartphones
- <li class="fragment">webcams (AMOS)
- <li class="fragment">citizen sUAS (drones)
- <li class="fragment">mobile sensor networks : cars, bicycles
- <li class="fragment">smart devices (internet of things): trash cans
-</ul>
-</section>
-
-<section>
-   <h3>Non-traditional data sources</h3>
-<p>
-From webcam to a spatio-temporal map
-<p>
-<a href="https://petrasovaa.github.io/amos-STC-presentation/foss4g_presentation.html#/">
-Active Transportation Patterns</a> by Anna Petrasova
-<p>
-</section>
-
-<section>
-   <h3>From mapping to GIS</h3>
-<p>
-Acquired data are transformed into georeferenced, 
-discrete representations of landscape features 
-<p>
-<ul>
-<li class="fragment">georeferencing (often in real-time using GPS)
-<li class="fragment">feature or theme extraction (e.g. image classification)
-<li class="fragment">building GIS data model representation <br>(geometry, attributes, time)
-</ul>
-</section>
-
-<section>
-   <h3>Georeferencing</h3>
-<p>
-Georeferenced data: location on Earth is represented in a <strong>Coordinate Referenced System (CRS)</strong> 
-<p>
-<ul>
-<li>geodetic (geographic) coordinate system: 
-<br>geoid -- ellipsoid -- latitude/longitude
-<p>
-<li>projected reference systems:
-<br>geoid -- ellipsoid -- developable surface -- plane -- x,y 
-</ul>
-</section>
-
-<section>
-   <h3>Geodetic (Geographic) CRS</h3>
-<p> geoid -- ellipsoid -- latitude/longitude
-<p><img height="200" src="img/data_acquisition/crs_elipsoid_latlong.jpg">
-<p><img height="250" src="img/data_acquisition/latlong.gif">
-<img height="250" src="img/data_acquisition/latlongareagrid.gif">
-</p>
-</section>
-
-<section>
-   <h3>Projected CRS</h3>
-<p>
-Projected reference systems (there are many):
-<br>geoid -- ellipsoid -- developable surface -- plane -- x,y 
-<p><img height="200" src="img/data_acquisition/crs_projected.jpg">
-</ul>
-<p>
-Learn more about 
-<br><a href="http://www.progonos.com/furuti/MapProj/Normal/TOC/cartTOC.html">
-cartographic projections</a>
-</p>
-</section>
-
-<section>
-   <h3>National and state CRS</h3>
-<p>
-Defined by:
-<ul>
-<li>Reference spheroid/geoid and datum: <br> e.g. GRS80-NAD83, WGS84
-<li>Projection and its parameters, e.g. : 
+<li><b>continuous fields: w=f(x,y), w=f(x,y,z)</b>
   <ul>
-  <li>Lambert Conformal Conic (LCC): states in US
-  <li>Universal Transverse Mercator (UTM): USGS, military
-  <li>Albers Equal Area (conic): USGS national map 
+  <li>each point in space is assigned a distinct value, 
+      change between two neighboring points is relatively small: elevation, precipitation
+  <li>represented by raster data model, 
+  <li>vector model is also used: meshes, TIN, isolines or points. 
   </ul>
-<li>Vertical datum: e.g. NAVD88 <font class=credit> North american Vertical Datum 1988</font>
+<li><b>discrete objects/features: lines, points or areas with attributes</b>
+  <ul>
+  <li>represented by vector data model as geometry(shape) with attribute table or object based (geodatabase); 
+  <li>raster representation is also used : roads, streams, census blocks, land use, schools
+  </ul>
 </ul>
 </section>
 
 <section>
-   <h3>CRS standards</h3>
+   <h3>Geospatial data models: Raster</h3>
 <p>
-International Organization of Oil and Gas Producers (OGP) Surveying and Positioning Committee,
-established standard for CRS definition with assigned EPSG codes
-(initiated by European Petroleum Survey Group - EPSG)
-<p>Find the codes and CRS representation in many formats here <a href="https://epsg.io/">epsg.io</a>
-Example: <a href="https://epsg.io/4326">EPSG:4326</a> WGS84 used in GPS
+Continuous: elevation, precipitation
+Discrete: land use, roads
+<p>Image Image
 </section>
 
 <section>
-   <h3>CRS for North Carolina</h3>
+   <h3>Raster data model 2D</h3>
 <p>
-Search for NC at <a href="https://epsg.io/">epsg.io</a> returns 72! CRS
-<p>Explain EPSG 
-<a href="https://epsg.io/3358">3358</a>, 
-<a href="https://epsg.io/4152">4152</a>
-<p><small>Projected CRS EPSG 3358 includes geoid to elipsoid projection (EPSG 4152) 
-and elipsoid to plane projection (3358), the units on the map are meters, not degrees
-</small>
-</section>
-
-<section>
-   <h3>Popular Visualization CRS</h3> 
-<p>
-Most common in on-line mapping systems: 
-<br>Pseudo-Mercator
-<p>
-EPSG statement
-<p class=small>We have reviewed the coordinate reference system used by Google, etc.
-and believe that it is technically flawed. We will not devalue the EPSG dataset by 
-including such inappropriate geodesy and cartography.”
-<br>
-In 1989, North American professional geographic organizations  
-called for a ban on all rectangular coordinate maps (especially Mercator).
-</p>
-<p class=credit>
-http://geography.about.com/library/weekly/aa030201b.htm
-<br>http://demonstrations.wolfram.com/WorldMapProjections/
-</p>
-</section>
-
-<section>
-   <h3>Popular Visualization CRS</h3>
-<p>
-The reference system was eventually included as
-<a href="https://epsg.io/3857">EPSG 3857</a>
-<!--3785--> 
-- it is not recommended for professional work
-    <p><img src="img/data_acquisition/mercatorproj.gif" width="60%">
-<p>See explanation of the animation and equations in an article about
-<a href="http://www.math.ubc.ca/~israel/m103/mercator/mercator.html">Mercator</a>
-</section>
-
-<section>
-   <h3>Coordinate systems in GIS</h3>
-Representation of coordinate systems in GIS
 <ul>
- <li>Metadata file
- <li>EPSG codes   
- <li>ESRI PRJ file 
- <li>PROJ format 
-<p ><small>EPSG translated to input parameters of the PROJ software
-<br>NAD83(High Accuracy Reference Network HARN) / North Carolina
-<br><3358> +proj=lcc +lat_1=36.16666666666666 +lat_2=34.33333333333334 
-<br>+lat_0=33.75 +lon_0=-79 +x_0=609601.22 +y_0=0 +ellps=GRS80 +units=m +no_defs
-</small>
-</p>
-</ul>
-</p>
+  <li>header + matrix of values (INT, FP, DP)
+  <li>continuous field : value assigned to a grid point
+  <li>discrete object : cat value assigned to pixel (area)
+  <li>imagery - several bands
+  <li>spatial extent and resolution
+<p>Image elevations, speed limit
 </section>
 
 <section>
-   <h3>Coordinate transformations</h3>
+   <h3>Raster data model for volumes</h3>
 <p>
-Geospatial data often come in different CRS, e.g.:
 <ul>
-  <li>Federal agencies: Geodetic CRS (WGS84), Albers equal area, UTM
- <li>State agencies: State Plane CRS
- <li>Older data may have different datums (NAD27, NAD83)
+ <li>set of 2D raster layers can be used to represent soil horizons or geological layers 
+ <li>combined representation: 
+ <ul>
+  <li>continuous (horizontally) 
+  <li>discrete (vertically)
+ </ul> 
+<p>Image animation soil layers
+</section>
+
+<section>
+   <h3>Raster data model for volumes</h3>
+<p>
+3D raster - voxel model
+<ul>
+  <li>header + 3D matrix of values 
+  <li>vertical resolution is usually much finer than horizontal
+  <li>mostly used for 3D continuous representation w=f(x,y,z)
+</ul>
+<p>Image soils from Jeff W, get from Anna
+</section>
+
+<section>
+   <h3>Geospatial data models: vector</h3>
+<p>
+Discrete: streets, streams, geodetic points, census blocks
+Continuous: elevation contours (isolines), precipitation (points)
+<p>Image Image
+</section>
+
+<section>
+   <h3>Vector data: geometry and attributes</h3>
+<p>
+<ul>
+ <li>geometry: 
+  <ul>
+  <li>[x,y,(z)] points representing points, lines, areas
+  <li>topology: nodes, vertices, centroids, line, polyline, boundary, polygon
+  </ul>
+ <li>attributes:
+ <ul>
+ <li> points, lines and areas are abstract representations 
+      of complex features (firestation – point, road – centerline, ...)
+ <li>attributes of these features are stored in data management systems
+ </ul>
+</ul>
+</section>
+
+<section>
+   <h3>Vector data: 3D models</h3>
+<p>
+Oblique photogrammetry, lidar - 3D models of cities now common
+  <p>3D vector data geometry: face, kernel volume
+<p>Image Image
+</section>
+
+<section>
+   <h3>Common geospatial data formats</h3>
+<p>specific implementation of data model, 
+<br>open standard or proprietary
+<p>
+Raster
+<ul>
+<li>GIS (ascii and binary): ArcGRID, GRASS, SURFER
+<li>Imagery: MrSID, GeoTIFF, BIN, JPEG2000
+<li>Graphics:  GIF, JPG, PNG, Bitmap
+<li>HDF, NetCDF
 </ul>
 <p>
-Coordinate transformations
-<p>
-<b>x,y -> longitude, latitude -> x’,y’</b> 
-<p class=small>
-often performed on-fly, may be inaccurate and time consuming
-<br>for projects with high accuracy requirements: first reproject all data into a suitable
-common CRS, then perform analysis and modeling
-</p>
+Vector
+<ul>
+<li>KML, Shape, ArcSDE, GML, MapInfo, TIGER
+<li>PostGIS, OracleSpatial
+</ul>
+</section>
+
+<section>
+<h3>data repositories</h3>
+Data repositories, WMS, WPS, WebGIS
+
+</section>
+
+<section>
+  <h3>open science: </h3>
+<p>open data, open source software, open access
+<p>OSGeo, geo4all
+</section>
+
+<section>
+  <h3>Open source geospatial resources</h3>
+<p>OSGeo: Web GIS(many), QGIS, GRASS GIS, libraries
+<p>R, pySAL
+</section>
+
+<section>
+  <h3>Intro to GRASS GIS</h3>
+<p>history, data management, structure
+<p>more in assignments
 </section>
 
 <section>
  <h3>Summary</h3>
 <ul>
-  <li>we provided overview of modern technologies for geospatial data acquisition
-  <li>we explained the concept of coordinate reference systems and related standards
+  <li>geospatial data acquisition
+  <li>projections, coordinate transformations, georeferencing
+  <li>raster and vector data models
+  <li>geospatial data formats
+  <li>data repositories, wms services, metadata
+  <li>open science: open data, open source software, open access
 </ul>
 </section>
 
-<!--
 <section>
  <h3>Reading, resources</h3>
 links
 </section>
--->
 
 <div class="parent-page">
     <!-- &#x1f3e0; -->
