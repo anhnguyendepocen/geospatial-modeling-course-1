@@ -197,7 +197,7 @@
 
 <section>
    <h3>Geospatial data models</h3>
-<p> Mapped data, modeling or analysis results are represented using
+<p> Mapped data, modeling or analysis results are represented in GIS using
 <ul>
   <li class="fragment">raster (regular grid) data model
   <li class="fragment">vector (feature) data model 
@@ -208,7 +208,7 @@
 </section>
 
 <section>
-   <h3>Geospatial objects and phenomena</h3>
+   <h3>Geospatial phenomena</h3>
 <p>
 <ul>
 <li>Continuous fields
@@ -230,15 +230,21 @@
     <li class="fragment">population densities</li>
     </ul>
 </ul>
+<aside class="notes">
+phenomenon
+anything that can be perceived as an occurrence or fact by the senses
+the object of perception, experience, etc
+</aside>
 </section>
 
 <section>
    <h3>Continuous fields</h3>
 <p>
   <ul>
-  <li class="fragment">each point in space is assigned a distinct value
-      and change in values between two neighboring points is relatively small</li>
-  <li class="fragment">mathematical representation as bi-variate or multi-variate function <i>w=f(x,y), w=f(x,y,z)</i></li>
+  <li class="fragment">each point in space is assigned a distinct value,
+      change in values between neighboring points is small</li>
+  <li class="fragment">mathematical representation: bi-variate or multi-variate 
+  continuous functions <i>w=f(x,y), w=f(x,y,z), w=f(x,y,z,t)</i></li>
   <li class="fragment">often represented by <b>raster data model</b>,</li>
   <li class="fragment">vector model is also used: isolines, meshes, or points.</li>
   </ul>
@@ -254,111 +260,169 @@
    <h3>Discrete objects / features</h3>
 <p>
   <ul>
-  <li class="fragment">lines, points, areas, or volumes with attributes
-  <li class="fragment">represented by <b>vector data model</b> as geometry(shape) with attribute database;
+  <li class="fragment">lines, points, or areas with attributes
+  <li class="fragment">represented by <b>vector data model</b> as geometry(shape) with attribute table;
   <li class="fragment">raster representation is also used
   </ul>
 <p class="fragment">
-<img height="220" src="img/data_models/streetsnoiseviewshedlu.jpg">
+<img height="220" src="img/data_models/streetsnoise.jpg">
+<img height="220" src="img/data_models/vectorast_census.png">
 <img height="220" src="img/data_models/rasterdiscr_roads.jpg">
 </p>
 </section>
 
 <section>
-   <h3>Raster data model 2D</h3>
+   <h3>Raster data model: 2D</h3>
 <p>
 <ul>
   <li>header: spatial extent and <b>resolution</b>, followed by matrix of values (INT, FP, DP),
   <li>continuous field : value assigned to a grid point
   <li>discrete object : category value assigned to pixel (area)
 </ul>
+<p class="fragment">
 <img height="350" src="img/data_models/raster_cont_discr.jpg">
+</p>
 </section>
 
 <section>
    <h3>Raster data model: continuous fields</h3>
+<small>Elevation, 10m resolution (combined with shaded relief) </small> 
+<img height="220" src="img/data_models/rastercont_elev.jpg">
 <p>
-<small>elevation, precipitation</small>
-<p class="fragment">
-<img height="250" src="img/lid2013_1r_3ft_3d.jpg">
-<img height="250" src="img/data_models/preciptopo3d.jpg">
+<small>Precipitation, 500m resolution (color map draped over elevation)</small>
+<img height="230" src="img/data_models/preciptopo3d.jpg">
 </p>
 </section>
 
 <section>
    <h3>Raster data model: discrete features</h3>
 <p>
-Discrete: land use, roads
+<small>Land use classes, 
+<br>Speed limits for roads and walking speed for off-road areas, 30m resolution</small>
 <p>
 <img height="280" src="img/data_models/raster_discr3dlu.jpg">
 <img height="280" src="img/data_models/rasterdiscr_roads.jpg">
 </section>
 
 <section>
-   <h3>Raster data model for volumes I</h3>
+   <h3>Raster data model: 3D </h3>
 <p>
+<div class="left" style="max-width:50%">
 <ul>
  <li>set of 2D raster layers can be used to represent soil horizons or geological layers 
  <li>combined representation: 
  <ul>
-  <li>continuous (horizontally) and  discrete (vertically)
+  <li>continuous (horizontally)
+  <li>discrete (vertically)
  </ul> 
 </ul>
-<br>
-<img height="280" src="img/data_models/horiz2.gif">
+</div>
+<div class="right" style="max-width:40%">
+<img width="90%" src="img/data_models/horiz2.gif">
 <p><small>Cross-sections through 3D model of soil horizons</small>
+</div>
 </section>
 
 <section>
-   <h3>Raster data model for volumes II</h3>
+   <h3>Raster data model: 3D</h3>
 <p>
-3D raster - voxel model
 <ul>
-  <li>header + 3D matrix of values 
+  <li>header + 3D matrix of values, voxel model 
+  <li>spatial extent N,S,E,W,<b>Top, Bottom</b>
   <li>vertical resolution is usually much finer than horizontal
   <li>mostly used for 3D continuous representation w=f(x,y,z)
 </ul>
-</section>
-
-<section>
-   <h3>Vector data model: geometry and attributes</h3>
-<p>
-<ul>
- <li>geometry: 
-  <ul>
-  <li>[x,y,(z)] points representing points, lines, areas
-  <li>topology: nodes, vertices, centroids, line, polyline, boundary, polygon
-  </ul>
- <li>attributes:
- <ul>
- <li> points, lines and areas are abstract representations 
-      of complex features (firestation – point, road – centerline, ...)
- <li>attributes of these features are stored in data management systems
- </ul>
-</ul>
-</section>
-
-<section>
-   <h3>Vector data: 3D models</h3>
-<p>
-Oblique photogrammetry, lidar - 3D models of cities now common
-  <p>3D vector data geometry: face, kernel volume
-<p>3D cities, building interior, 
-<p>Image Image
+<img height="200" src="img/data_models/Voxelcodbox.gif">
+<img height="120" src="img/data_models/lgsoilcorg.gif">
+<img height="200" src="img/data_models/Voxelphfenc.gif">
+<img height="120" src="img/data_models/lg_soilph.gif">
+<p><small>Soil properties: Percent organic carbon, soil pH reaction </small>
+<!--<video height="300" controls loop autoplay> <source src="img/data_models/Voxelcodbox.mpg" type="video/mpg">-->
 </section>
 
 <section>
    <h3>Vector data model</h3>
 <p>
+ Abstract representation of complex features 
+<br><small>school – point, road – centerline, park - polygon</small>
+<ul>
+ <li><b>Geometry:</b> 
+  <ul>
+  <li>Points [x,y,(z)] represent point, line, or polygon(area) features
+  <li>Set of points create elements of feature geometry: <b>line</b>: nodes, vertices; <b>polygon</b>: centroid, boundary 
+  <li><a href="https://en.wikipedia.org/wiki/Topology">Topology</a> defines how the elements of 
+feature geometry are interrelated and organized (don't confuse with topography!)
+ <li>Topology ensures integrity of features and efficiency by defining shared coincident geometry (shared 
+boundaries, nodes). 
+  </ul>
+<p>
+ <li><b>Attributes</b> are stored in data management systems
+</ul>
+<aside class="notes">
+the study of geometric properties and spatial relations unaffected by the continuous change of shape or size of figures.
+the way in which constituent parts are interrelated or arranged.
+</aside>
+</section>
+
+<section>
+   <h3>Vector data model geometry</h3>
+<p>Elements: vertices(red), nodes(blue)
+<p>Point data: no topology; Line data: vertices, nodes
+<p>
+<img height="200" src="img/data_models/pointdata.png"> 
+<img height="280" src="img/data_models/roads_nodes_vert.png">
+</section>
+
+<section>
+   <h3>Vector data model geometry</h3>
+<p>Elements: vertices(red), nodes(blue), centroids(green)
+<p>
+Polygons: vertices+nodes=boundaries, centroids 
+<p>
+<!--<img height="300" src="img/data_models/vectovertices_census.png">-->
+<img height="380" src="img/data_models/census_nodesvertcentrlb2.png">
+</section>
+
+<!--
+<section>
+   <h3>Vector data model: discrete features</h3>
+<p>
 Discrete: streets, streams, geodetic points, census blocks
-Continuous: elevation contours (isolines), precipitation (points)
+<img height="250" src="img/data_models/vectorast_census.png">
+<img height="250" src="img/data_models/vectorast_census.png">
 <p>Image Image
 </section>
 
 <section>
+   <h3>Vector data model: continuous fields</h3>
+<p>
+Continuous: elevation contours (isolines), precipitation (points)
+<p>Image Image
+</section>
+-->
+
+<section>
+   <h3>Vector data: 3D models</h3>
+<p><small>Learn more in 
+<a href="http://ncsu-geoforall-lab.github.io/uav-lidar-analytics-course/schedule.html">GIS595 UAS mapping for 3D modeling course</a>
+</small>
+<p>
+<div class="sketchfab-embed-wrapper"><iframe width="640" height="480" src="https://sketchfab.com/models/3b3e1a037183477eacd3eeb7d7f009aa/embed" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+    <a href="https://sketchfab.com/models/3b3e1a037183477eacd3eeb7d7f009aa?utm_medium=embed&utm_source=website&utm_campaign=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Centennial Campus Textiles Buildings</a>
+    by <a href="https://sketchfab.com/osgeolab?utm_medium=embed&utm_source=website&utm_campaign=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">NCSU GeoForAll Lab</a>
+    on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campaign=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+</p>
+</div>
+</section>
+
+<section>
    <h3>Data model modifications </h3>
+<p>
 <ul>
   <li>Changing raster resolution 
+<p>
   <li>Changing vector geometry type
 </ul>
 </section>
@@ -367,36 +431,120 @@ Continuous: elevation contours (isolines), precipitation (points)
    <h3>Raster data  - changing resolution</h3>
 <p>Resolution: size of the grid cell (pixel) in map units (m)
 <ul>
-  <li>discrete: nearest neighbor resampling
-  <li>continuous: re-interpolation
+<li>continuous fields: re-interpolation
+  <ul>
+    <li>the higher res. raster values are <b>interpolated</b> using the values of the neighboring lower res. cells
+    <li>methods: bi-linear, bi-cubic, spline
+  </ul>
+<p>
+  <li class="fragment">discrete raster data: nearest neighbor resampling
+  <ul>
+     <li>assigns the higher res. cell the <b>same value</b> as the nearest lower res. cell 
+     <li>resulting raster has only the values present in the input raster
+  </ul>
+</p>
 </ul>
-<p> Image composite: slide 31 with equations
+<p>
+See <a href="https://en.wikipedia.org/wiki/Bicubic_interpolation">Wikipedia for more detailed explanation and equations</a> 
 </section>
 
 <section>
-   <h3>Increasing resolution</h3>
-<p>Effect of resampling / reinterpolation on the resulting raster
-<p> Image composite: slide 30 also a note from 33
+   <h3>Increasing resolution: continuous</h3>
+<p>Elevation at 30m resolution resampled to 10m resolution 
+<p>
+<img width="95%" src="img/data_models/rast_resampl_elev.jpg">
+<p>Raster values are observed elevations
+</section>
+
+<section>
+   <h3>Increasing resolution: discrete</h3>
+<p>Geology at 30m resolution resampled to 10m resolution
+<p>
+<img width="95%" src="img/data_models/rast_resampl_geol.jpg">
+<p>Raster values are classes of observed geology
+<!--change geology example to more realistic landcover-->
+</section>
+
+<section>
+   <h3>Increasing resolution: compare</h3>
+<p>Effect of resampling / reinterpolation on the results
+<img height="480" src="img/data_models/rast_resampl_geol_elev.jpg">
+<!--change geology example to more realistic landcover-->
+</section>
+
+<section>
+   <h3>Increasing resolution: compare</h3>
+<p>From 30m resolution to 20m resolution
+<p>
+<br>
+<div class="left" style="max-width:30%">
+<ul>
+  <li>grid cells do not align,
+  <li>elevation: no "flats"
+  <li>geology: area for each class may change 
+</ul>
+</div>
+<div class="right" style="max-width:60%">
+<img width="90%" src="img/data_models/rast_resampl_geol_elev_30_20.jpg">
+</div>
+<!--change geology example to more realistic landcover-->
+</section>
+
+
+<section>
+   <h3>Decreasing resolution</h3>
+<ul>
+  <li>continuous: re-interpolation, average, min, max, nearest neighbor
+</ul>
+<p> 
+<img height="300" src="img/data_models/rast_resampl_elev_down.jpg">
 </section>
 
 <section>
    <h3>Decreasing resolution</h3>
 <ul>
-  <li>discrete: nearest neighbor resampling, mode (most common)
-  <li>continuous: re-interpolation, average, nearest neighbor
+  <li>discrete: nearest neighbor resampling, mode (most common class)
 </ul>
-<p> Image composite: slide 35
+<p> 
+<img height="300" src="img/data_models/rast_resampl_geol_down.png">
 </section>
 
 <section>
-   <h3>Changing vector geometry</h3>
+   <h3>Changing vector data</h3>
 <p>
 <ul>
-  <li>lines or areas to points
-  <li>points to lines
-  <li>generalization
+  <li>Converting vector data type
+  <ul>
+   <li>lines to points, areas to lines or points
+   <li>points to lines: network building or interpolation may be needed
+   <li>usually preserves the shape
+  </ul>
+<p>
+  <li class="fragment">Generalization
+  <ul>
+   <li>simplifying geometry while preserving important information 
+   <li>both data geometry and type can be modified
+   <li>line to simplified line, polygon to simplified polygon or point
+   <li>selecting subset of features 
+   <li>important when combining local, state and national scale data
+  </ul>
+  </li>
+</p>
 </ul>
-<p> Image composite: slide 35
+</section>
+
+<section>
+   <h3>Changing vector data type</h3>
+<p>
+Data geometry is not modified,
+but subset is extracted and stored in a different data structure
+<p>
+<small>Topology building is required for conversions point to line, line to polygon</small>
+<p>
+<img height="200" src="img/data_models/census_nodesvertcentrlb2.png">
+<!--<img height="150" src="img/data_models/vectopoints_census.png.png">-->
+<img height="200" src="img/data_models/vectovertices_census.png">
+<img height="200" src="img/data_models/vectorboundary.png">
 </section>
 
 <section>
@@ -405,85 +553,136 @@ Continuous: elevation contours (isolines), precipitation (points)
 <ul>
  <li>vector to raster
  <ul>
-  <li>continuous: spatial interpolation
+  <li>continuous: spatial interpolation (covered by a separate topic)
   <li>discrete: nearest neighbor
  </ul>
- <li>raster to vector
+<p>
+ <li class="fragment">raster to vector
  <ul>
   <li>continuous: point sampling, isolines
   <li>discrete: nearest neighbor, grid center or boundary
  </ul>
 </ul>
 <p>
-Image composite - professional mapping
 </section>
 
 <section>
-   <h3>Conversion between data models</h3>
-<p>Examples see slide 48,50
+   <h3>Vector to raster data</h3>
 <ul>
- <li>vector to raster
- <ul>
-  <li>continuous: spatial interpolation
-  <li>discrete: nearest neighbor
- </ul>
- <li>raster to vector
+  <li>lines, areas: nearest neighbor
+  <li>areas: attribute value applies to the entire polygon
+<small> – only complete polygons can be converted to be fully valid</small>
 </ul>
 <p>
-Image composite - professional mapping
+<img height="350" src="img/data_models/vect_to_rast.jpg">
+</section>
+
+<section>
+   <h3>Raster to vector data</h3>
+<p>Continuous data: sampling points, isolines 
+<p>
+<img height="400" src="img/data_models/rast_to_vect_cont.jpg">
+</section>
+
+<section>
+   <h3>Raster to vector data</h3>
+<p>
+<ul>
+  <li>points – center of grid cell
+  <li>lines, polygon border lines: connected grid cell centers
+  <li>thinning and smoothing is often performed for lines 
+</ul>
+<p>
+<img height="360" src="img/data_models/rast_to_vect_discr.jpg">
+</section>
+
+<section>
+   <h3>Raster to vector data</h3>
+<p>
+<ul>
+   <li>areas – boundary, centroid, requires building topology 
+   <li>connects points on grid cell boundary
+</ul>
+<p>
+<img height="380" src="img/data_models/rast_to_vect_discr_area.jpg">
 </section>
 
 <section>
    <h3>Common geospatial data formats</h3>
-<p>specific implementation of data model, 
+<p>Format: specific implementation of data model, 
 <br>open standard or proprietary
-<p>
-Raster
-<ul>
-<li>GIS (ascii and binary): ArcGRID, GRASS, SURFER
-<li>Imagery: MrSID, GeoTIFF, BIN, JPEG2000
+<p> Raster
+<ul class="fragment">
+<li>GIS (ascii and binary): GeoTIFF, ArcGRID, GRASS, SURFER
+<li>Imagery: MrSID, GeoTIFF, BIN, JPEG2000, IMG
 <li>Graphics:  GIF, JPG, PNG, Bitmap
 <li>HDF, NetCDF
 </ul>
 <p>
 Vector
-<ul>
+<ul class="fragment">
 <li>KML, Shape, ArcSDE, GML, MapInfo, TIGER
 <li>PostGIS, OracleSpatial
 </ul>
 </section>
 
 <section>
-<h3>data repositories</h3>
-Data repositories, WMS, WPS, WebGIS
-
+   <h3>Geospatial data format conversion</h3>
+<p>
+Format description is usually stored with data: automated format recognition and conversion
+<p class="fragment"> 
+General library for geospatial raster and vector format conversions:
+<br>Geospatial Data Abstraction Library (GDAL/OGR)
+<br><strong>gdal.osgeo.org</strong>
+<p class="fragment">
+given format - <strong>single abstract model</strong> - new format
+</p>
+<p class="fragment">
+GDAL includes command line utilities for data processing
+</p>
+<p class="fragment">
+Coupled with PROJ library it also provides coordinate system transformations
+</p>
 </section>
 
 <section>
-  <h3>open science: </h3>
-<p>open data, open source software, open access
-<p>OSGeo, geo4all
+<h3>Data repositories</h3>
+Data repositories: WMS, WPS, WebGIS
+<ul>
+  <li>Web mapping Service
+  <li>Web Processing Service
+</ul>
+<p>
+See<a href="http://ncsu-geoforall-lab.github.io/geospatial-modeling-course/resources/data_providers.html">
+Webpage with links to relevant services</a>
 </section>
 
+<section>
+  <h3>Open science </h3>
+<p>open data, open source software, open access
+<p>Learn more: 
+<a href="https://ncsu-geoforall-lab.github.io/open-science-course/topics/open-science.html">What is Open Science</a>
+</section>
+
+<!--
 <section>
   <h3>Open source geospatial resources</h3>
+<p>OSGeo, geo4all
 <p>OSGeo: Web GIS(many), QGIS, GRASS GIS, libraries
 <p>R, pySAL
 </section>
+-->
 
 <section>
  <h3>Summary</h3>
 <ul>
   <li>raster and vector data models
+  <li>modifying raster and vector data models
+  <li>converting between raster and vector data models
   <li>geospatial data formats
-  <li>data repositories, wms services, metadata
+  <li>data repositories, wms services, <!--metadata-->
   <li>open science: open data, open source software, open access
 </ul>
-</section>
-
-<section>
- <h3>Reading, resources</h3>
-links
 </section>
 
 <div class="parent-page">
