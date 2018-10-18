@@ -25,7 +25,8 @@
 <ul class="nav">
 <li><a href="../index.html">Syllabus</a></li>
 <li><a href="../schedule.html">Schedule</a></li>
-<li><a href="../logistics.html">Course logistics</a></li>
+<li><a href="../topics/course_intro.html">Introduction</a></li>
+<li><a href="../logistics.html">Logistics</a></li>
 <li><a href="../topics/index.html">Topics</a></li>
 <li><a href="../projects.html">Projects</a></li>
 <li><a href="../faq.html">FAQs</a></li>
@@ -198,13 +199,23 @@ e.g. <em class="module"><a href="https://grass.osgeo.org/grass74/manuals/v.surf.
 
 In case the CRS of the file doesn't match the CRS
 used in the GRASS Location, reprojection can be done before importing
-using <em>las2las</em> tool.
+using <em>las2las</em> tool from libLAS.
 
 <p>
 The following example command is for reprojecting tiles
 in NAD83/North Carolina in feet (EPSG:2264)
 into NAD83/North Carolina in meters (EPSG:3358):
 <pre><code>las2las --a_srs=EPSG:2264 --t_srs=EPSG:3358 -i input_spf.las -o output_spm.las
+</code></pre>
+
+<h4>Importing data in LAS version 1.4 or newer</h4>
+
+The LAS version 1.4 is not backwards compatible for readers expecting
+LAS 1.2. Unfortunately, libLAS supports only 1.2 and not 1.4.
+Fortunately, PDAL can convert to the version 1.2 using the translate
+tool:
+
+<pre><code>pdal translate --input=input_v14.las --writers.las.minor_version=2 --output=output_v12.las
 </code></pre>
 
 <h4>Importing data with broken projection information</h4>
@@ -259,7 +270,7 @@ in the same way as any other directories on the computer.
 
 <nav>
 <ul>
-<li><a class="term-changes" href="https://moodle-courses1718.wolfware.ncsu.edu/course/view.php?id=4708">Moodle site</a></li>
+<li><a class="term-changes" href="https://moodle-courses1819.wolfware.ncsu.edu/course/view.php?id=575">Moodle site</a></li>
 <li><a href="http://help.ncsu.edu/">Computing Help</a></li>
 <li><a href="https://geospatial.ncsu.edu/">GIST Home</a></li>
 <li><a href="http://www.ncsu.edu/policies/prr-disclaimer.php">Disclaimer</a></li>
